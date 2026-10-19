@@ -1,1 +1,19 @@
-[]
+[
+  { "world": "akhra", "title": "TODO", "artist": "Mukund Nayak", "youtubeId": "", "notes": "Theth Nagpuri / jhumar. Use an upload from the artist's or label's official channel." },
+  { "world": "akhra", "title": "TODO", "artist": "Mahavir Nayak", "youtubeId": "", "notes": "Theth Nagpuri / jhumar." },
+  { "world": "akhra", "title": "TODO", "artist": "Govind Sharan Lohra", "youtubeId": "", "notes": "Folk / jhumar." },
+  { "world": "akhra", "title": "TODO", "artist": "Madhu Mansuri Hasmukh", "youtubeId": "", "notes": "Folk." },
+
+  { "world": "trekker", "title": "Pokhara Ke Pire Guiya", "artist": "Pawan Roy, Pankaj Roy, Monika Mundu", "youtubeId": "", "notes": "2016. Example entry." },
+  { "world": "trekker", "title": "TODO", "artist": "Monika Mundu", "youtubeId": "", "notes": "2000s–2010s Nagpuri pop." },
+  { "world": "trekker", "title": "TODO", "artist": "Pawan Roy", "youtubeId": "" },
+  { "world": "trekker", "title": "TODO", "artist": "Pankaj Roy", "youtubeId": "" },
+  { "world": "trekker", "title": "TODO", "artist": "Nitesh Kachhap", "youtubeId": "" },
+  { "world": "trekker", "title": "TODO", "artist": "Kumar Pritam", "youtubeId": "" },
+  { "world": "trekker", "title": "TODO", "artist": "Ignes Kumari", "youtubeId": "" },
+
+  { "world": "biha", "title": "TODO", "artist": "TODO", "youtubeId": "", "notes": "Wedding / domkach song." },
+
+  { "world": "parab", "title": "TODO", "artist": "TODO", "youtubeId": "", "festival": "karam", "notes": "Karam song." },
+  { "world": "parab", "title": "TODO", "artist": "TODO", "youtubeId": "", "festival": "sarhul", "notes": "Sarhul song." }
+]
