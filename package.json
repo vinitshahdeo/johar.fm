@@ -14,7 +14,8 @@
     "test": "vitest run",
     "build": "npm run verify && npm run typecheck && npm test && vite build",
     "preview": "vite preview",
-    "og": "tsx scripts/render-images.ts"
+    "og": "tsx scripts/render-images.ts",
+    "fonts": "tsx scripts/fetch-fonts.ts"
   },
   "devDependencies": {
     "@types/node": "^22.20.5",

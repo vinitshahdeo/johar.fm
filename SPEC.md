@@ -355,6 +355,9 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
    scene files keep their original names. Scenes, playlists and
    ambience are unchanged. The localStorage key is now `joharfm:v1`. `SITE_URL`
    (`https://mandar.fm.vercel.app`) and the GitHub repo name (`vinitshahdeo/mandar.fm`) are unchanged.
+10. **Fonts (2026-10-19):** self-hosted Yatra One (display; subset to the wordmark, overlay greeting and
+    dial words, ~3 KB) and Mukta (UI; Latin 400/600/700, ~14 KB each), both OFL. Supersedes the
+    system-fonts-only decision in §9.
 
 ---
 

@@ -53,8 +53,12 @@ and red laterite soil.
 
 ## Fonts
 
-johar.fm uses your device's own fonts (the Devanagari in the logo uses Kohinoor Devanagari, Noto Sans
-Devanagari, Nirmala UI or similar). No web fonts are downloaded.
+- [Yatra One](https://fonts.google.com/specimen/Yatra+One) by Catherine Leigh Schmidt, inspired by
+  hand-painted signage on Indian roads. Used for the logo and the Nagpuri words on the dial.
+- [Mukta](https://fonts.google.com/specimen/Mukta) by Ek Type, for everything else.
+
+Both are licensed under the SIL Open Font License and served from this site. No requests go to
+Google Fonts.
 
 ## Built with
 

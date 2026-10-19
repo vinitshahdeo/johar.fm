@@ -158,6 +158,13 @@ npm run preview      # serve dist/
 `npm run build` is strict: it fails until every world has at least one verified song. To build
 the scaffold before that: `ALLOW_EMPTY_WORLDS=1 npm run build`.
 
+### Fonts
+
+[Yatra One](https://fonts.google.com/specimen/Yatra+One) (logo and dial words) and
+[Mukta](https://fonts.google.com/specimen/Mukta) (everything else) are self-hosted in `public/fonts/`.
+Yatra One is subset to only the characters it shows, so **re-run `npm run fonts` after changing the
+Nagpuri dial words** in `src/i18n/strings.ts`, or new letters will fall back to a system font.
+
 ### Share image and icons
 
 `public/og.png` (1200×630) and the app icons are rendered from the live Akhra scene with headless
@@ -191,8 +198,6 @@ npx vercel --prod
 - **Lock screen and background play.** Title and artist appear on the lock screen and headset buttons
   work where the browser allows. Many mobile browsers pause a YouTube iframe when the screen locks or
   the tab is in the background, and a website can't override that.
-- **Fonts.** Devanagari uses the device's own fonts, so it looks slightly different on Android, iOS and
-  Windows.
 
 ## Project layout
 
