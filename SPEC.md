@@ -359,7 +359,7 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
     dial words, ~3 KB) and Mukta (UI; Latin 400/600/700, ~14 KB each), both OFL. Supersedes the
     system-fonts-only decision in §9.
 11. **Join mid-song on station switch (2026-10-19):** the first track after switching stations starts at
-    `max(startAt, 30 s)`, so the station feels like it was already on air. The first tap and later
+    `max(startAt, random 30–90 s)`, so the station feels like it was already on air. The first tap and later
     tracks use their normal `startAt`.
 
 ---
