@@ -23,7 +23,13 @@
           <p class="greet" title="Jharkhand"><span class="sr">Jharkhand, </span>{{en.coords}}</p>
         </header>
 
-        <p id="festival" class="festival" role="status" hidden></p>
+        <div class="corner">
+          <button class="theme-toggle" id="btn-theme" type="button" aria-label="{{en.themeNight}}" title="{{en.themeNight}}">
+            <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+            <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+          </button>
+          <p id="festival" class="festival" role="status" hidden></p>
+        </div>
 
         <div class="dock" id="dock">
         <section class="radio" aria-label="Radio">

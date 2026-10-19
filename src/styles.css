@@ -115,9 +115,27 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
 }
 :root[data-phase="afternoon"] .top, :root[data-phase="morning"] .top { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55); }
 
-.festival {
+/* Top-right corner: day/night switch, with the festival badge (when active) underneath. */
+.corner {
   position: absolute; z-index: 6;
   top: max(14px, env(safe-area-inset-top)); right: max(16px, env(safe-area-inset-right));
+  display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+}
+.theme-toggle {
+  display: grid; place-items: center; width: 40px; height: 40px; padding: 0;
+  border: 1px solid rgba(255, 248, 236, 0.4); border-radius: 50%;
+  background: rgba(20, 12, 8, 0.35); color: #fff8ec; cursor: pointer;
+  transition: background 0.2s;
+}
+.theme-toggle svg { width: 20px; height: 20px; }
+.theme-toggle .i-moon { fill: currentColor; }
+.theme-toggle .i-sun { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.theme-toggle .i-sun circle { fill: currentColor; stroke: none; }
+/* Show the mode you'd switch to: a moon by day, a sun by night. */
+:root[data-phase="morning"] .theme-toggle .i-sun, :root[data-phase="afternoon"] .theme-toggle .i-sun,
+:root[data-phase="dusk"] .theme-toggle .i-moon, :root[data-phase="night"] .theme-toggle .i-moon { display: none; }
+@media (hover: hover) { .theme-toggle:hover { background: rgba(20, 12, 8, 0.55); } }
+.festival {
   margin: 0; padding: 6px 14px; border-radius: 999px;
   background: var(--laal); color: var(--paper); font-size: 15px;
   box-shadow: 0 0 0 3px var(--paper), 0 6px 20px rgba(0, 0, 0, 0.35);

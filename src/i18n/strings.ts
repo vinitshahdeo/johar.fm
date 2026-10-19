@@ -23,6 +23,8 @@ export const en = {
   next: 'Next song',
   volume: 'Volume',
   ambience: 'Village sounds',
+  themeDay: 'Switch to day',
+  themeNight: 'Switch to night',
   madeWithLove: 'Made with love from Jharkhand',
   suggest: 'Suggest a song',
 };

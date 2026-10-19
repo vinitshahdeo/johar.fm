@@ -6,6 +6,7 @@ import { isWorldId } from './data/worlds';
 import { prefetchScenes, showScene } from './scene/registry';
 import { DEFAULT_PREFS, loadPrefs } from './storage';
 import { getDayPhase, isPhase, type Phase } from './time/dayPhase';
+import { en } from './i18n/strings';
 import { getActiveFestival, parseDay, type FestivalEntry } from './time/festival';
 import { bindKeyboard } from './ui/keyboard';
 import { bindRadio } from './ui/radio';
@@ -24,7 +25,11 @@ function now(): Date {
   }
   return new Date();
 }
-const currentPhase = (): Phase => (isPhase(phaseOverride) ? phaseOverride : getDayPhase(now()));
+// The header's day/night switch overrides the clock for the rest of the visit (not saved).
+let manualPhase: Phase | null = null;
+const currentPhase = (): Phase =>
+  isPhase(phaseOverride) ? phaseOverride : (manualPhase ?? getDayPhase(now()));
+const isDaytime = (p: Phase) => p === 'morning' || p === 'afternoon';
 
 const saved = loadPrefs();
 const festival = getActiveFestival(now(), festivals as FestivalEntry[]);
@@ -77,6 +82,19 @@ const warm = () => void loadYouTubeApi().catch(() => {});
 tune.addEventListener('pointerenter', warm, { once: true });
 tune.addEventListener('touchstart', warm, { once: true, passive: true });
 tune.addEventListener('focus', warm, { once: true });
+
+const themeBtn = document.getElementById('btn-theme')!;
+const syncThemeButton = (p: Phase) => {
+  const label = isDaytime(p) ? en.themeNight : en.themeDay;
+  themeBtn.setAttribute('aria-label', label);
+  themeBtn.title = label;
+};
+themeBtn.addEventListener('click', () => {
+  manualPhase = isDaytime(app.store.get().phase) ? 'night' : 'afternoon';
+  app.setPhase(manualPhase);
+});
+syncThemeButton(app.store.get().phase);
+app.store.subscribe((s, prev) => s.phase !== prev.phase && syncThemeButton(s.phase));
 
 // Re-check the time of day every minute so the scene follows the clock.
 setInterval(() => app.setPhase(currentPhase()), 60_000);

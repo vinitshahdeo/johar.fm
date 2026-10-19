@@ -17,7 +17,7 @@ Love, Travel, Party and Festive. One tap and it plays.
   | Party | `party` | Wedding courtyard with the madwa (`biha.ts`) |
   | Festive | `festive` | Festival akhra with Karam, Sarhul, Jitiya, Fagua props (`parab.ts`) |
 - **Follows your clock.** Morning, afternoon, dusk and night each have their own look; lanterns and the
-  fire glow after dark. During a festival the Festive station lights up.
+  fire glow after dark. A sun/moon button in the header flips between day and night for the visit. During a festival the Festive station lights up.
 - **Village sounds** (crickets, wind in the sal, a distant mandar, the trekker's engine and horn) are
   synthesised in the browser. No sound files.
 - **Songs play from YouTube** using official uploads. Nothing is downloaded or re-hosted.
