@@ -335,7 +335,7 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
 1. **Player stays hidden** behind the scene, as briefed. The iframe is 200×200 px, kept in the layout
    (not `display:none`, which stops playback) and placed under the scene with `z-index` and
    `pointer-events:none`. Risk accepted: YouTube's embed policies require a visible player.
-2. **Name: mandar.fm.** Production URL: `https://mandar.fm.vercel.app`. "Akhra" stays as the name of the
+2. **Name: mandar.fm.** Production URL: `https://johar.fm.vercel.app`. "Akhra" stays as the name of the
    default world.
 3. **Repo:** `vinitshahdeo/mandar.fm` (used for "Suggest a song").
 4. **Festival:** only first-time visitors are auto-switched to Parab; returning visitors see the glow + banner.
@@ -353,8 +353,8 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
    `akhra`, `trekker`, `biha` and `parab` worlds respectively. Later the same day the world ids
    themselves were renamed to `love`, `travel`, `party`, `festive` (playlists.json, code, tests); the
    scene files keep their original names. Scenes, playlists and
-   ambience are unchanged. The localStorage key is now `joharfm:v1`. `SITE_URL`
-   (`https://mandar.fm.vercel.app`) and the GitHub repo name (`vinitshahdeo/mandar.fm`) are unchanged.
+   ambience are unchanged. The localStorage key is now `joharfm:v1`. `SITE_URL` is now
+   `https://johar.fm.vercel.app`; the GitHub repo name (`vinitshahdeo/mandar.fm`) is unchanged.
 10. **Fonts (2026-10-19):** self-hosted Yatra One (display; subset to the wordmark, overlay greeting and
     dial words, ~3 KB) and Mukta (UI; Latin 400/600/700, ~14 KB each), both OFL. Supersedes the
     system-fonts-only decision in §9.
