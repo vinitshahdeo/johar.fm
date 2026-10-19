@@ -17,7 +17,7 @@ const UA = {
 };
 
 /** Every character rendered in Yatra One: the wordmark, the overlay greeting and the dial words. */
-export const DISPLAY_TEXT = ['जोहार.fm', 'Johar!', ...Object.values(nag)].join(' ');
+export const DISPLAY_TEXT = ['जोहार.fm', 'जोहार!', ...Object.values(nag)].join(' ');
 
 async function css(query: string): Promise<string> {
   const res = await fetch(`https://fonts.googleapis.com/css2?${query}`, { headers: UA });

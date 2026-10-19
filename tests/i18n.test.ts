@@ -25,8 +25,8 @@ describe('i18n', () => {
     expect(nagLines.filter((l) => !/\/\/\s*VERIFY\b/.test(l))).toEqual([]);
   });
 
-  it('hard-codes no Devanagari in index.html except the जोहार wordmark', () => {
+  it('hard-codes no Devanagari in index.html except जोहार (wordmark and overlay greeting)', () => {
     const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
-    expect(html.match(/[ऀ-ॿ]+/g) ?? []).toEqual(['जोहार']);
+    expect([...new Set(html.match(/[ऀ-ॿ]+/g) ?? [])]).toEqual(['जोहार']);
   });
 });
