@@ -5,7 +5,9 @@
   "description": "A Nagpuri/Sadri nostalgia radio for Jharkhand.",
   "type": "module",
   "license": "MIT",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "vite",
     "verify": "tsx scripts/verify-playlists.ts",

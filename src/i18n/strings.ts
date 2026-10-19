@@ -12,7 +12,9 @@ export const nag = {
   tapToTune: 'छुआ, रेडियो चालू करा', // VERIFY
   tuning: 'टियुन होवत हे…', // VERIFY
   noSignal: 'सिगनल नखे', // VERIFY
+  emptyWorld: 'इ टेसन में अभी गीत नखे', // VERIFY
   retry: 'फिर से', // VERIFY
+  tapVideo: 'गीत चालू करेक ले वीडियो के छुआ', // VERIFY
   phase_morning: 'बिहान होय गेलक', // VERIFY
   phase_afternoon: 'दुपहरिया बेरा', // VERIFY
   phase_dusk: 'साँझ होय गेलक, अखड़ा चला', // VERIFY
@@ -41,7 +43,9 @@ export const en: Record<StringKey, string> = {
   tapToTune: 'Tap to tune in',
   tuning: 'Tuning…',
   noSignal: 'No signal',
-  retry: 'Retry',
+  emptyWorld: 'No songs on this station yet',
+  retry: 'Tap ▶ to retry',
+  tapVideo: 'Tap the video to start the music',
   phase_morning: 'Good morning',
   phase_afternoon: 'Afternoon',
   phase_dusk: 'Dusk — come to the akhra',

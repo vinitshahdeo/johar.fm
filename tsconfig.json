@@ -22,7 +22,7 @@
     "noEmit": true,
     "allowImportingTsExtensions": true
   },
-  "include": ["dev", 
+  "include": ["dev", "build", 
     "src",
     "scripts",
     "tests",

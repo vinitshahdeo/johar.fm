@@ -1,1 +1,84 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>mandar.fm</title></head><body><script type="module" src="/src/main.ts"></script></body></html>
+<!doctype html>
+<html lang="en" data-phase="dusk" data-world="akhra">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>mandar.fm — Nagpuri radio from Jharkhand | मांदर एफएम</title>
+    <meta name="description" content="A Nagpuri radio that never stops: theth Nagpuri, jhumar, trekker hits, biha and parab songs, under sal trees at a village akhra. नागपुरी गीत, अखड़ा, जोहार।" />
+    <meta name="theme-color" content="#b3202a" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!--HEAD-->
+  </head>
+  <body>
+    <main>
+      <section class="stage" aria-label="mandar.fm">
+        <div id="scene" class="scene" data-scene="akhra"><!--SCENE--></div>
+        <div id="yt-wrap" class="yt-wrap" aria-hidden="true"><div id="yt"></div></div>
+
+        <header class="top">
+          <h1 class="brand">mandar<span>.fm</span></h1>
+          <p class="greet">
+            <span class="nag" lang="hi">{{nag.greeting}}</span>
+            <span class="phase-greet" lang="hi" id="phase-greet"></span>
+          </p>
+        </header>
+
+        <p id="festival" class="festival" role="status" hidden></p>
+
+        <section class="radio" aria-label="Radio">
+          <div class="dial" id="dial" role="group" aria-label="Choose a world">
+            <div class="dial-scale" aria-hidden="true"></div>
+            <div class="dial-needle" id="needle" aria-hidden="true"></div>
+            <button class="station" data-world="akhra" aria-pressed="true"><span lang="hi">{{nag.world_akhra}}</span><small>{{en.world_akhra}}</small></button>
+            <button class="station" data-world="trekker" aria-pressed="false"><span lang="hi">{{nag.world_trekker}}</span><small>{{en.world_trekker}}</small></button>
+            <button class="station" data-world="biha" aria-pressed="false"><span lang="hi">{{nag.world_biha}}</span><small>{{en.world_biha}}</small></button>
+            <button class="station" data-world="parab" aria-pressed="false"><span lang="hi">{{nag.world_parab}}</span><small>{{en.world_parab}}</small></button>
+          </div>
+
+          <div class="now" aria-live="polite">
+            <p class="np-title" id="np-title"><span>{{en.tapToTune}}</span></p>
+            <p class="np-artist" id="np-artist">&nbsp;</p>
+          </div>
+
+          <div class="controls">
+            <button class="ctl ctl-play" id="btn-play" aria-label="{{en.play}}" title="{{en.play}} (Space)">
+              <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+            </button>
+            <button class="ctl" id="btn-next" aria-label="{{en.next}}" title="{{en.next}} (→)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l8.5 6L6 18zM16 6h2v12h-2z"/></svg>
+            </button>
+            <label class="vol" title="{{en.volume}} (↑ ↓)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 8.5a4.5 4.5 0 0 1 0 7"/></svg>
+              <span class="sr">{{en.volume}}</span>
+              <input type="range" id="volume" min="0" max="100" step="1" value="70" />
+            </label>
+            <button class="ctl ctl-amb" id="btn-amb" aria-pressed="true" title="{{en.ambience}} (A)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c4 3 6 6 6 9a6 6 0 0 1-12 0c0-3 2-6 6-9zm0 5v12"/></svg>
+              <span class="sr">{{en.ambience}}</span>
+            </button>
+            <a class="ctl ctl-yt" id="np-link" href="https://www.youtube.com/" target="_blank" rel="noopener" title="Open on YouTube" hidden>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5H5V6h5"/></svg>
+              <span class="sr">Open this song on YouTube</span>
+            </a>
+          </div>
+        </section>
+
+        <div class="overlay" id="overlay">
+          <button class="tune" id="tune">
+            <span class="tune-greet" lang="hi">{{nag.greeting}}</span>
+            <span class="tune-nag" lang="hi">{{nag.tapToTune}}</span>
+            <span class="tune-en">{{en.tapToTune}}</span>
+          </button>
+        </div>
+      </section>
+
+      <footer class="foot" id="about">
+        <div class="foot-inner">
+          <!--FOOTER-->
+        </div>
+      </footer>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

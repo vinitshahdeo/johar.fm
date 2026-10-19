@@ -293,8 +293,9 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
   the test then switches to warn-only after a `DIALECT_REVIEWED = true` flag is set.
 - Initial strings (all drafts for you to correct): greeting "जोहार", tap-to-tune line, world names,
   per-phase greetings (morning/afternoon/dusk/night), festival greetings, no-signal message, footer line.
-- Fonts: self-hosted, subset **Noto Sans Devanagari** (OFL) for UI, plus one display face for headings
-  (e.g. **Tiro Devanagari Hindi**, OFL). Both are credited. `font-display: swap`.
+- Fonts: **system fonts only** (Noto Sans Devanagari on Android, Kohinoor on iOS/macOS, Nirmala UI on
+  Windows). A self-hosted Devanagari face was 98 KB even per-script, which blows the performance budget;
+  revisit with a glyph subset if the system faces feel too plain.
 
 ---
 
@@ -307,9 +308,9 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
 - **JSON-LD**: `WebSite` + `FAQPage` ("What is mandar.fm?", "Where does the music come from?",
   "How do I suggest a song?").
 - `public/robots.txt`, `public/sitemap.xml` (single URL; generated from `SITE_URL`).
-- **OG image**: `scripts/render-og.ts` renders the default Akhra scene at dusk plus the title in Devanagari
-  and Latin to `public/og.png` (1200×630) using `@resvg/resvg-js` with the bundled fonts. It's
-  regenerated on build. Tags: `og:*` + `twitter:card=summary_large_image`. WhatsApp needs < 300 KB, so it's
+- **OG image**: `npm run og` screenshots the default Akhra scene at dusk plus the title in Devanagari
+  and Latin to `public/og.png` (1200×630) using local headless Chrome, so it matches the live CSS
+  exactly. It is committed rather than rebuilt on Vercel (no Chrome there); re-run after scene changes. Tags: `og:*` + `twitter:card=summary_large_image`. WhatsApp needs < 300 KB, so it's
   tested for that size.
 - **Footer**: "Made with love from Jharkhand" (+ Nagpuri line), artist channel links (from
   `artists.json`), link to `/credits` (rendered from CREDITS.md at build), "Suggest a song" →
@@ -321,7 +322,7 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
 ### Performance budget (to hit Lighthouse mobile ≥ 90)
 - JS ≤ 35 KB gzip initial (no YouTube until tap); CSS ≤ 10 KB; scene SVG inline ≤ 40 KB for the
   default world; other worlds' SVGs lazy-loaded on idle.
-- Fonts: subset Devanagari + Latin, ≤ 60 KB total, preloaded.
+- Fonts: none downloaded (system fonts).
 - No layout shift: overlay and radio panel have fixed dimensions.
 
 ---
@@ -344,7 +345,7 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
 ## 12. Acceptance criteria
 
 Build and data
-- [ ] `npm run build` runs `verify-playlists` then `vite build` then `render-og`; fails on DEAD,
+- [ ] `npm run build` runs `verify-playlists`, typecheck, tests, then `vite build`; fails on DEAD,
       MISMATCH, NETWORK, malformed/duplicate IDs, or (unless `ALLOW_EMPTY_WORLDS=1`) a world with no
       playable tracks.
 - [ ] No YouTube ID or channel URL in the repo was written by me; all seed entries are empty placeholders.
@@ -370,7 +371,7 @@ Launch
 - [ ] Lighthouse mobile ≥ 90 on all four categories (measured on the Vercel preview).
 - [ ] OG image 1200×630, < 300 KB, previews correctly in X card validator / WhatsApp.
 - [ ] robots.txt, sitemap.xml, JSON-LD FAQ validate.
-- [ ] CREDITS.md lists every font and every sound (recorded or synthesised); `/credits` page renders it.
+- [ ] CREDITS.md lists every sound (recorded or synthesised); `/credits` page renders it.
 - [ ] README has run/build/verify/deploy steps and the awesome-saloon-wtf one-liner.
 
 ---
