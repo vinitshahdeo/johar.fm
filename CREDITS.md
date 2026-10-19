@@ -60,3 +60,13 @@ Devanagari, Nirmala UI or similar). No web fonts are downloaded.
 
 [Vite](https://vite.dev) and [TypeScript](https://www.typescriptlang.org). Songs play through the
 [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference).
+
+## Built by
+
+johar.fm was made out of love for old Nagpuri songs, and for their lyrics most of all. Those
+songs talk about love the way people here actually feel it: a glance across the akhra, a name
+hummed on the trekker home, a promise made before the mandar starts. This is a small way of
+keeping them playing.
+
+Built in Ranchi, Jharkhand, at **23.35° N, 85.33° E**, by
+[Vinit Shahdeo](https://instagram.com/vinitshahdeo).
