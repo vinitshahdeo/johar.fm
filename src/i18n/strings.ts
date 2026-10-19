@@ -10,10 +10,10 @@ export const en = {
   tapVideo: 'Tap the video to start the music',
   /** Shown under the wordmark: Jharkhand (Ranchi, the capital), as on the state's Wikipedia infobox. */
   coords: '23.35° N, 85.33° E',
-  world_akhra: 'Love',
-  world_trekker: 'Travel',
-  world_biha: 'Party',
-  world_parab: 'Festive',
+  world_love: 'Love',
+  world_travel: 'Travel',
+  world_party: 'Party',
+  world_festive: 'Festive',
   festival_karam: 'Happy Karam',
   festival_sarhul: 'Happy Sarhul',
   festival_jitiya: 'Happy Jitiya',
@@ -36,8 +36,8 @@ export type StringKey = keyof typeof en;
 export const NAG_REVIEWED = false;
 
 export const nag = {
-  world_akhra: 'माया', // VERIFY: love
-  world_trekker: 'डहर', // VERIFY: road, path
-  world_biha: 'मांदर', // VERIFY: the mandar drum
-  world_parab: 'परब', // VERIFY: festival
+  world_love: 'माया', // VERIFY: love
+  world_travel: 'डहर', // VERIFY: road, path
+  world_party: 'मांदर', // VERIFY: the mandar drum
+  world_festive: 'परब', // VERIFY: festival
 };

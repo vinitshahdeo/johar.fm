@@ -14,7 +14,7 @@ function seeded(seed: number) {
 }
 
 const mk = (id: string, extra: Partial<Track> = {}): Track => ({
-  world: 'akhra',
+  world: 'love',
   title: id,
   artist: 'x',
   youtubeId: id,

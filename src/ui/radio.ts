@@ -112,7 +112,7 @@ export function bindRadio(app: App): void {
       festival.hidden = false;
       festival.textContent = en[`festival_${s.festival.id}`];
     } else festival.hidden = true;
-    stations.forEach((b) => b.classList.toggle('festive', !!s.festival && b.dataset.world === 'parab'));
+    stations.forEach((b) => b.classList.toggle('festive', !!s.festival && b.dataset.world === 'festive'));
   }
 
   render(app.store.get());

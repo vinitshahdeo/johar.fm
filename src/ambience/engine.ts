@@ -38,7 +38,7 @@ export function createAmbience(ctx: AudioContext): Ambience {
 
   const layers = new Map<LayerId, Layer>();
   const levels = new Map<LayerId, number>();
-  let world: WorldId = 'akhra';
+  let world: WorldId = 'love';
   let phase: Phase = 'dusk';
   let volume = 70;
   let enabled = true;

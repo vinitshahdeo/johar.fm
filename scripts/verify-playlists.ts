@@ -15,7 +15,7 @@ import { validateFestivals } from '../src/time/festival.ts';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p: string) => JSON.parse(readFileSync(join(root, p), 'utf8'));
 
-const WORLDS = ['akhra', 'trekker', 'biha', 'parab'] as const;
+const WORLDS = ['love', 'travel', 'party', 'festive'] as const;
 const FESTIVALS = ['karam', 'sarhul', 'jitiya', 'fagua'];
 const ID_RE = /^[A-Za-z0-9_-]{11}$/;
 const offlineWarn = process.env.VERIFY_OFFLINE === 'warn';

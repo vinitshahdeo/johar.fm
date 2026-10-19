@@ -25,8 +25,8 @@ describe('storage', () => {
 
   it('round-trips prefs', () => {
     vi.stubGlobal('localStorage', memoryStorage());
-    savePrefs({ world: 'trekker', volume: 42, ambience: false });
-    expect(loadPrefs()).toEqual({ world: 'trekker', volume: 42, ambience: false });
+    savePrefs({ world: 'travel', volume: 42, ambience: false });
+    expect(loadPrefs()).toEqual({ world: 'travel', volume: 42, ambience: false });
   });
 
   it('sanitises bad values field by field', () => {

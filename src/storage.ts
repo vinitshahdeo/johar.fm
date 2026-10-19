@@ -11,9 +11,9 @@ export interface Prefs {
 
 export const STORAGE_KEY = 'joharfm:v1';
 
-export const DEFAULT_PREFS: Prefs = { world: 'akhra', volume: 70, ambience: true };
+export const DEFAULT_PREFS: Prefs = { world: 'love', volume: 70, ambience: true };
 
-const WORLDS: readonly string[] = ['akhra', 'trekker', 'biha', 'parab'];
+const WORLDS: readonly string[] = ['love', 'travel', 'party', 'festive'];
 
 function getStore(): Storage | null {
   try {

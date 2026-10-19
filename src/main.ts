@@ -30,7 +30,7 @@ const saved = loadPrefs();
 const festival = getActiveFestival(now(), festivals as FestivalEntry[]);
 const queryWorld = q.get('world');
 // First-time visitors land on Parab during a festival; returning visitors keep their world.
-const world = isWorldId(queryWorld) ? queryWorld : saved ? saved.world : festival ? 'parab' : DEFAULT_PREFS.world;
+const world = isWorldId(queryWorld) ? queryWorld : saved ? saved.world : festival ? 'festive' : DEFAULT_PREFS.world;
 const prefs = saved ?? DEFAULT_PREFS;
 
 const app = createApp(
@@ -59,7 +59,7 @@ app.store.subscribe((s, prev) => {
 });
 root.dataset.phase = app.store.get().phase;
 if (festival) root.dataset.festival = festival.id;
-if (world !== 'akhra') void showScene(sceneEl, world);
+if (world !== 'love') void showScene(sceneEl, world);
 
 // The scene ends where the radio starts (portrait), so publish the dock's real height to CSS.
 const dock = document.getElementById('dock')!;

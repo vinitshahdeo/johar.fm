@@ -10,14 +10,14 @@ Love, Travel, Party and Festive. One tap and it plays.
 
 - **Four moods on the dial**, each with its own illustration, playlist and village sounds:
 
-  | Dial label | Internal id (`world` in playlists.json) | Scene |
+  | Dial label | `world` in playlists.json | Scene (file in `src/scene/`) |
   |---|---|---|
-  | Love | `akhra` | Village akhra at dusk under sal trees |
-  | Travel | `trekker` | Overloaded trekker on a ghat road |
-  | Party | `biha` | Wedding courtyard with the madwa |
-  | Festive | `parab` | Festival akhra (Karam, Sarhul, Jitiya, Fagua props) |
+  | Love | `love` | Village akhra at dusk under sal trees (`akhra.ts`) |
+  | Travel | `travel` | Overloaded trekker on a ghat road (`trekker.ts`) |
+  | Party | `party` | Wedding courtyard with the madwa (`biha.ts`) |
+  | Festive | `festive` | Festival akhra with Karam, Sarhul, Jitiya, Fagua props (`parab.ts`) |
 - **Follows your clock.** Morning, afternoon, dusk and night each have their own look; lanterns and the
-  fire glow after dark. During a festival the Festive (`parab`) station lights up.
+  fire glow after dark. During a festival the Festive station lights up.
 - **Village sounds** (crickets, wind in the sal, a distant mandar, the trekker's engine and horn) are
   synthesised in the browser. No sound files.
 - **Songs play from YouTube** using official uploads. Nothing is downloaded or re-hosted.
@@ -42,11 +42,12 @@ Useful URL overrides while developing:
 |---|---|---|
 | `?phase=` | `?phase=night` | Force morning / afternoon / dusk / night |
 | `?date=` | `?date=2026-09-02` | Pretend it's this date (to test festival highlighting) |
-| `?world=` | `?world=trekker` | Start on a world |
+| `?world=` | `?world=travel` | Start on a station (`love`, `travel`, `party`, `festive`) |
 
 Dev-only pages (not shipped):
 
-- `/dev/scene.html?world=parab&phase=night&festival=sarhul`: a single scene, for drawing.
+- `/dev/scene.html?world=parab&phase=night&festival=sarhul`: a single scene, for drawing (takes the
+  scene file names: `akhra`, `trekker`, `biha`, `parab`).
 - `/dev/ambience-balance.html`: renders each ambience layer offline and prints its loudness. Use it to
   set `TRIM` in `src/ambience/layers.ts` after changing a sound.
 
@@ -67,12 +68,12 @@ Songs live in [`src/data/playlists.json`](src/data/playlists.json):
 
 | Field | |
 |---|---|
-| `world` | `akhra` (Love), `trekker` (Travel), `biha` (Party) or `parab` (Festive) |
+| `world` | `love`, `travel`, `party` or `festive` |
 | `title`, `artist` | Shown in the radio and on the lock screen |
 | `youtubeId` | The 11-character ID from `youtube.com/watch?v=…`. Leave `""` for a placeholder. |
 | `startAt` | Optional. Seconds to skip (long intros). |
 | `notes` | Optional. For you; not shown. |
-| `festival` | Optional, `parab` (Festive) only: `karam`, `sarhul`, `jitiya` or `fagua`. These songs come up 3× as often during that festival. |
+| `festival` | Optional, `festive` only: `karam`, `sarhul`, `jitiya` or `fagua`. These songs come up 3× as often during that festival. |
 | `titleMatch` | Optional. Part of the real YouTube title, if the verifier can't match your `title` (see below). |
 
 Rules:
@@ -134,7 +135,7 @@ year's dates from a calendar you trust:
 ]
 ```
 
-The Festive (`parab`) station starts glowing `leadDays` (default 7) before `start` and stops `trailDays`
+The Festive station starts glowing `leadDays` (default 7) before `start` and stops `trailDays`
 (default 2) after `end`. First-time visitors land on it during that window; returning visitors keep
 their last station and see the glow and a greeting. Test with `?date=YYYY-MM-DD`.
 

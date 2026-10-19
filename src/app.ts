@@ -39,7 +39,7 @@ export function createApp(initial: AppState, ytWrap: HTMLElement) {
 
   const festivalWeight = () => {
     const f = store.get().festival;
-    bags.get('parab')!.setWeight((t) => (f && t.festival === f.id ? 3 : 1));
+    bags.get('festive')!.setWeight((t) => (f && t.festival === f.id ? 3 : 1));
   };
   festivalWeight();
 

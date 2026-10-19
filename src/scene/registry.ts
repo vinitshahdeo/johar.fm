@@ -5,10 +5,10 @@ type SceneFn = () => string;
 
 // Akhra ships in the main bundle (it's also inlined in the HTML). Other worlds load on demand.
 const loaders: Record<WorldId, () => Promise<SceneFn>> = {
-  akhra: async () => akhraScene,
-  trekker: () => import('./trekker').then((m) => m.trekkerScene),
-  biha: () => import('./biha').then((m) => m.bihaScene),
-  parab: () => import('./parab').then((m) => m.parabScene),
+  love: async () => akhraScene,
+  travel: () => import('./trekker').then((m) => m.trekkerScene),
+  party: () => import('./biha').then((m) => m.bihaScene),
+  festive: () => import('./parab').then((m) => m.parabScene),
 };
 
 export function loadScene(world: WorldId): Promise<SceneFn> {

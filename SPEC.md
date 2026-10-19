@@ -350,7 +350,9 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
    **जोहार.fm**. All other copy is English, except a small Nagpuri word under each dial label
    (माया, डहर, मांदर, परब; drafts marked `// VERIFY`) (supersedes §9's Nagpuri
    strings and the `// VERIFY` workflow). Dial labels are **Love, Travel, Party, Festive** for the
-   `akhra`, `trekker`, `biha` and `parab` worlds respectively; internal ids, scenes, playlists and
+   `akhra`, `trekker`, `biha` and `parab` worlds respectively. Later the same day the world ids
+   themselves were renamed to `love`, `travel`, `party`, `festive` (playlists.json, code, tests); the
+   scene files keep their original names. Scenes, playlists and
    ambience are unchanged. The localStorage key is now `joharfm:v1`. `SITE_URL`
    (`https://mandar.fm.vercel.app`) and the GitHub repo name (`vinitshahdeo/mandar.fm`) are unchanged.
 
