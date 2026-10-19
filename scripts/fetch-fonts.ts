@@ -1,9 +1,10 @@
 /**
  * Downloads the self-hosted fonts into public/fonts/ (both SIL Open Font License):
  *
- * - Yatra One (display: wordmark, dial words, overlay greeting, trekker sign), subset by Google Fonts to only the
+ * - Yatra One (display: wordmark, dial words, overlay greeting), subset by Google Fonts to only the
  *   characters the site shows in it. Re-run after changing the Nagpuri words in src/i18n/strings.ts.
  * - Mukta (UI text), Latin subset, weights 400/600/700.
+ * - Kalam Bold (the hand-painted route on the trekker), subset to that text only.
  *
  *   npm run fonts
  */
@@ -17,7 +18,8 @@ const UA = {
 };
 
 /** Every character rendered in Yatra One: the wordmark, the overlay greeting and the dial words. */
-export const DISPLAY_TEXT = ['जोहार.fm', 'जोहार!', ...Object.values(nag)].join(' ');
+const { trekker_sign, ...dialWords } = nag;
+export const DISPLAY_TEXT = ['जोहार.fm', 'जोहार!', ...Object.values(dialWords)].join(' ');
 
 async function css(query: string): Promise<string> {
   const res = await fetch(`https://fonts.googleapis.com/css2?${query}`, { headers: UA });
@@ -36,6 +38,9 @@ async function save(url: string, file: string) {
 const uniq = [...new Set(DISPLAY_TEXT)].join('');
 const yatra = await css(`family=Yatra+One&display=swap&text=${encodeURIComponent(uniq)}`);
 await save(/url\((https:[^)]+)\)/.exec(yatra)![1], 'yatra-one-subset.woff2');
+
+const kalam = await css(`family=Kalam:wght@700&display=swap&text=${encodeURIComponent([...new Set(trekker_sign)].join(''))}`);
+await save(/url\((https:[^)]+)\)/.exec(kalam)![1], 'kalam-sign-subset.woff2');
 
 for (const w of [400, 600, 700]) {
   const c = await css(`family=Mukta:wght@${w}&display=swap`);

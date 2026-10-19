@@ -30,6 +30,31 @@ function hanger(x: number, y: number, shirt: string): string {
 </g>`;
 }
 
+/**
+ * The route painted freehand on the jeep's side: a hand-lettered font, each word at its own slight
+ * angle and height, rough paint edges (displacement filter) and a dark offset shadow like sign paint.
+ */
+function paintedSign(text: string): string {
+  const words = text.split(' ');
+  // [x, y, size, rotation] per word, in the jeep's coordinates; extra words fall back to the last slot.
+  const slots: [number, number, number, number][] = [[-46, -103, 25, -6], [31, -109, 18, 4], [76, -106, 27, -3]];
+  const draw = (fill: string, dx: number, dy: number) =>
+    `<g fill="${fill}" transform="translate(${dx} ${dy})">${words
+      .map((w, i) => {
+        const [x, y, size, rot] = slots[Math.min(i, slots.length - 1)];
+        return `<text x="${x}" y="${y}" font-size="${size}" transform="rotate(${rot} ${x} ${y})">${w}</text>`;
+      })
+      .join('')}</g>`;
+  return `<defs><filter id="paint" x="-10%" y="-40%" width="120%" height="180%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+  </filter></defs>
+  <g filter="url(#paint)" font-family="Kalam, 'Kohinoor Devanagari', 'Noto Sans Devanagari', sans-serif" font-weight="700" lang="hi">
+    ${draw('#7e1219', 2, 2)}${draw('#fff8ec', 0, 0)}
+    <path d="M78 -97 q34 6 72 -3" fill="none" stroke="#fff8ec" stroke-width="2.6" stroke-linecap="round"/>
+  </g>`;
+}
+
 function wheel(x: number, y: number): string {
   let spokes = '';
   for (let i = 0; i < 6; i++) spokes += `<path d="M0 0 L${Math.round(Math.cos((i * Math.PI) / 3) * 16)} ${Math.round(Math.sin((i * Math.PI) / 3) * 16)}"/>`;
@@ -67,7 +92,7 @@ function trekker(): string {
     <path d="M60 -163 q10 -12 20 0z"/><path d="M112 -162 q10 -12 20 0z"/><path d="M140 -164 q10 -12 20 0z"/>
   </g>
   <rect x="-96" y="-150" width="22" height="9" rx="2" fill="#3a2b20"/>
-  <text x="30" y="-108" font-size="22" fill="${C.saree}" font-family="'Yatra One', 'Kohinoor Devanagari', 'Noto Sans Devanagari', sans-serif" text-anchor="middle" lang="hi">${nag.trekker_sign}</text>
+  ${paintedSign(nag.trekker_sign)}
   <circle cx="-188" cy="-110" r="9" fill="#f6ecc4" stroke="#999" stroke-width="2"/>
   <rect x="186" y="-120" width="10" height="16" rx="2" fill="#a51d1d"/>
   <path d="M-60 -60 V-130 M16 -60 V-188 M94 -60 V-188" stroke="${bodyDark}" stroke-width="3"/>
