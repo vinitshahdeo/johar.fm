@@ -11,7 +11,8 @@ export interface Prefs {
 
 export const STORAGE_KEY = 'joharfm:v1';
 
-export const DEFAULT_PREFS: Prefs = { world: 'love', volume: 70, ambience: true };
+// Village sounds start off: they play only once the listener turns them on.
+export const DEFAULT_PREFS: Prefs = { world: 'love', volume: 70, ambience: false };
 
 const WORLDS: readonly string[] = ['love', 'travel', 'party', 'festive'];
 

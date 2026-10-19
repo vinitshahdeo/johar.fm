@@ -19,7 +19,8 @@ Love, Travel, Party and Festive. One tap and it plays.
 - **Follows your clock.** Morning, afternoon, dusk and night each have their own look; lanterns and the
   fire glow after dark. A sun/moon button in the header flips between day and night for the visit. During a festival the Festive station lights up.
 - **Village sounds** (crickets, wind in the sal, a distant mandar, the trekker's engine and horn) are
-  synthesised in the browser. No sound files.
+  synthesised in the browser. No sound files. They're off by default; the leaf button turns them on,
+  and that choice is remembered.
 - **Songs play from YouTube** using official uploads. Nothing is downloaded or re-hosted.
 - No login, no cookies of our own, no analytics. Lighthouse mobile: 100 / 100 / 100 / 100.
 

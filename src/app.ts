@@ -148,16 +148,31 @@ export function createApp(initial: AppState, ytWrap: HTMLElement) {
     }
   }
 
-  async function loadAmbience(ctx: AudioContext | null): Promise<Ambience | null> {
-    if (ambience) return ambience;
-    if (!ctx) return null;
-    try {
-      const { createAmbience } = await import('./ambience/engine');
-      ambience = createAmbience(ctx);
-      return ambience;
-    } catch {
-      return null;
-    }
+  let audioCtx: AudioContext | null = null;
+  let ambienceLoading: Promise<Ambience | null> | null = null;
+
+  /**
+   * Loads and starts the ambience engine the first time village sounds are switched on (never before),
+   * so nothing synthesises in the background while they're off. Must be first called from a gesture.
+   */
+  function ensureAmbience(): Promise<Ambience | null> {
+    if (ambienceLoading) return ambienceLoading;
+    audioCtx ??= unlockAudio();
+    const ctx = audioCtx;
+    if (!ctx) return Promise.resolve(null);
+    ambienceLoading = import('./ambience/engine')
+      .then(({ createAmbience }) => {
+        const a = createAmbience(ctx);
+        const s = store.get();
+        a.start(s.world, s.phase);
+        a.setVolume(s.muted ? 0 : s.volume);
+        a.setEnabled(s.ambience);
+        if (s.status === 'playing') a.duck(true);
+        ambience = a;
+        return a;
+      })
+      .catch(() => null);
+    return ambienceLoading;
   }
 
   const persist = () => {
@@ -168,17 +183,12 @@ export function createApp(initial: AppState, ytWrap: HTMLElement) {
   const app = {
     store,
 
-    /** First user gesture. Starts ambience at once, then the YouTube player. */
+    /** First user gesture. Unlocks audio, starts village sounds if they're on, then the YouTube player. */
     async start() {
       if (store.get().started) return;
       store.set({ started: true, status: 'tuning' });
-      const ambP = loadAmbience(unlockAudio()).then((a) => {
-        if (!a) return;
-        const s = store.get();
-        a.start(s.world, s.phase);
-        a.setVolume(s.muted ? 0 : s.volume);
-        a.setEnabled(s.ambience);
-      });
+      audioCtx ??= unlockAudio();
+      const ambP = store.get().ambience ? ensureAmbience() : Promise.resolve(null);
       try {
         await yt.init();
         next();
@@ -257,7 +267,8 @@ export function createApp(initial: AppState, ytWrap: HTMLElement) {
     toggleAmbience() {
       const on = !store.get().ambience;
       store.set({ ambience: on });
-      ambience?.setEnabled(on);
+      if (ambience) ambience.setEnabled(on);
+      else if (on) void ensureAmbience();
       persist();
     },
   };

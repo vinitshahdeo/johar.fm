@@ -361,6 +361,8 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
 11. **Join mid-song on station switch (2026-10-19):** the first track after switching stations starts at
     `max(startAt, random 30–90 s)`, so the station feels like it was already on air. The first tap and later
     tracks use their normal `startAt`.
+12. **Village sounds off by default (2026-10-19):** ambience plays only after the listener turns it on
+    (leaf button or `A`). The engine isn't even loaded until then. A saved "on" choice is respected.
 
 ---
 
