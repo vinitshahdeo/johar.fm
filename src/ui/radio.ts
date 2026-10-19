@@ -84,17 +84,22 @@ export function bindRadio(app: App): void {
     play.title = `${playLabel} (Space)`;
 
     if (s.status === 'nosignal') {
-      title.textContent = en.noSignal;
+      setPlainTitle(en.noSignal);
       artist.textContent = en.retry;
     } else if (s.status === 'empty') {
-      title.textContent = en.emptyWorld;
+      setPlainTitle(en.emptyWorld);
       artist.textContent = '\u00a0';
     } else if (s.track) {
-      title.textContent = s.track.title;
-      title.title = s.track.title;
+      if (title.dataset.text !== s.track.title) {
+        title.dataset.text = s.track.title;
+        title.innerHTML = '';
+        title.append(Object.assign(document.createElement('span'), { textContent: s.track.title }));
+        title.title = s.track.title;
+        fitTitle();
+      }
       artist.textContent = s.track.artist;
     } else if (s.status === 'tuning') {
-      title.textContent = en.tuning;
+      setPlainTitle(en.tuning);
       artist.textContent = '\u00a0';
     }
     if (s.track && s.status !== 'nosignal' && s.status !== 'empty') {
@@ -114,6 +119,28 @@ export function bindRadio(app: App): void {
     } else festival.hidden = true;
     stations.forEach((b) => b.classList.toggle('festive', !!s.festival && b.dataset.world === 'festive'));
   }
+
+  function setPlainTitle(text: string) {
+    delete title.dataset.text;
+    title.classList.remove('marquee');
+    title.removeAttribute('title');
+    title.textContent = text;
+  }
+
+  // Scroll long titles instead of cutting them off.
+  function fitTitle() {
+    title.classList.remove('marquee');
+    if (!title.dataset.text) return;
+    // Measure the title box: the inner span is inline, and inline elements report no scroll width.
+    const overflow = title.scrollWidth - title.clientWidth;
+    if (overflow > 2) {
+      title.classList.add('marquee');
+      title.style.setProperty('--marquee-shift', `${-(overflow + 24)}px`);
+      title.style.setProperty('--marquee-time', `${Math.max(6, overflow / 25)}s`);
+    }
+  }
+  addEventListener('resize', fitTitle);
+  void document.fonts?.ready.then(fitTitle); // the web font changes text width
 
   render(app.store.get());
   app.store.subscribe(render);

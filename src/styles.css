@@ -48,6 +48,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 button { font: inherit; color: inherit; }
+button, a, input { -webkit-tap-highlight-color: transparent; }
 a { color: inherit; }
 .sr {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -83,17 +84,18 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
   z-index: 0; pointer-events: none;
 }
 .yt-wrap iframe { width: 200px; height: 200px; border: 0; }
-/* Fallback when the browser blocks programmatic playback: show it so the listener can tap it. */
+/* Fallback when the browser blocks programmatic playback: show it, centred over a dimmed page, so the
+   listener can tap it. The hint sits above the player so it never lands on the radio controls. */
 .yt-wrap.reveal {
   z-index: 50; pointer-events: auto;
-  left: 50%; top: 42%; transform: translate(-50%, -50%);
+  left: 50%; top: 50%; transform: translate(-50%, -42%);
   border: 6px solid var(--laal); border-radius: 12px; overflow: hidden;
-  box-shadow: 0 0 0 4px var(--paper), 0 20px 60px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0 4px var(--paper), 0 0 0 100vmax rgba(20, 12, 8, 0.6);
 }
 .yt-hint {
-  position: absolute; left: 50%; top: calc(42% + 130px); transform: translateX(-50%);
-  z-index: 50; margin: 0; padding: 6px 12px; border-radius: 999px;
-  background: var(--paper); color: var(--ink); font-size: 14px; white-space: nowrap;
+  position: absolute; left: 50%; top: calc(50% - 0.42 * 212px - 50px); transform: translateX(-50%);
+  z-index: 51; margin: 0; padding: 6px 14px; border-radius: 999px; max-width: calc(100% - 32px);
+  background: var(--paper); color: var(--ink); font-size: 15px; font-weight: 600; text-align: center;
 }
 
 .top {
@@ -130,10 +132,10 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
   display: flex; flex-direction: column; align-items: stretch; gap: 6px;
 }
 .credit-line {
-  margin: 0; text-align: center; font-size: 12px; line-height: 1.4; color: #fff8ec;
+  margin: -4px 0; text-align: center; font-size: 12px; line-height: 1.4; color: #fff8ec;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
 }
-.credit-line a { color: var(--amber); text-decoration: none; }
+.credit-line a { color: var(--amber); text-decoration: none; display: inline-block; padding: 4px 2px; }
 .credit-line a:hover, .credit-line a:focus-visible { text-decoration: underline; }
 
 /* ---------- radio ---------- */
@@ -191,11 +193,15 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
   background: #ff4b3e; box-shadow: 0 0 8px #ff4b3e; animation: festive 1.4s ease-in-out infinite alternate;
 }
 @keyframes festive { to { opacity: 0.3; } }
-.station:hover { color: var(--amber); }
+@media (hover: hover) { .station:hover { color: var(--amber); } }
 
 .now { min-height: 52px; padding: 10px 4px 2px; text-align: center; }
 .np-title, .np-artist { margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .np-title { font-weight: 700; font-size: 17px; }
+/* Long titles scroll back and forth instead of being cut off (radio.ts adds .marquee when they overflow). */
+.np-title.marquee { text-overflow: clip; mask: linear-gradient(90deg, transparent, #000 12px, #000 calc(100% - 12px), transparent); -webkit-mask: linear-gradient(90deg, transparent, #000 12px, #000 calc(100% - 12px), transparent); }
+.np-title.marquee > span { display: inline-block; padding: 0 12px; animation: marquee var(--marquee-time, 10s) ease-in-out infinite alternate; }
+@keyframes marquee { 0%, 15% { transform: translateX(0); } 85%, 100% { transform: translateX(var(--marquee-shift, 0)); } }
 .np-artist { font-size: 14px; color: var(--muted); }
 .radio[data-status="nosignal"] .np-title, .radio[data-status="empty"] .np-title { color: var(--laal); }
 
@@ -214,7 +220,7 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
 :root.playing .ctl-play .i-play { display: none; }
 .ctl-amb svg, .ctl-yt svg, .vol svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .ctl-amb[aria-pressed="true"] { background: var(--sal); color: var(--paper); }
-.ctl:hover { filter: brightness(1.06); }
+@media (hover: hover) { .ctl:hover { filter: brightness(1.06); } }
 .vol { flex: 1; display: flex; align-items: center; gap: 6px; min-width: 0; }
 .vol svg { width: 22px; height: 22px; flex: none; color: var(--muted); }
 .vol input { flex: 1; min-width: 0; height: 44px; accent-color: var(--laal); cursor: pointer; }
@@ -257,6 +263,8 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
 }
 
 @media (max-width: 380px) {
+  .vol svg { display: none; }
+  .festival { font-size: 13px; padding: 4px 10px; }
   .radio { padding: 16px 10px 10px; }
   .station span { font-size: 12px; letter-spacing: 0.06em; }
   .controls { gap: 6px; }
@@ -268,7 +276,7 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
   .radio { padding: 14px 10px 8px; border-radius: 14px; }
   .radio::before { top: 4px; height: 7px; background-size: auto 7px; }
   .dial { padding: 12px 4px 2px; }
-  .station { min-height: 36px; }
+  .station { min-height: 40px; }
   .station small { display: none; }
   .now { min-height: 0; padding: 6px 4px 0; }
   .np-title { font-size: 15px; }
@@ -280,7 +288,14 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
 @media (min-width: 900px) and (min-height: 700px) {
   .dock { bottom: 20px; }
 }
+@media (max-width: 340px) {
+  .ctl-yt { display: none !important; }
+  .ctl { width: 40px; height: 40px; }
+  .ctl-play { width: 48px; height: 48px; }
+}
 @media (prefers-reduced-motion: reduce) {
+  .np-title.marquee > span { animation: none; }
+  .np-title.marquee { text-overflow: ellipsis; mask: none; -webkit-mask: none; }
   .tune::before, .station.festive::after { animation: none; }
   .dial-needle, .overlay, .scene > svg { transition: none; }
 }
