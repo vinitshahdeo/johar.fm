@@ -14,7 +14,6 @@ export function bindRadio(app: App): void {
   const vol = $<HTMLInputElement>('volume');
   const amb = $<HTMLButtonElement>('btn-amb');
   const radio = dial.closest<HTMLElement>('.radio')!;
-  const phaseGreet = $('phase-greet');
   const festival = $('festival');
 
   // ----- dial: click a station, or drag the needle -----
@@ -108,7 +107,6 @@ export function bindRadio(app: App): void {
     }
     amb.setAttribute('aria-pressed', String(s.ambience));
 
-    phaseGreet.textContent = en[`phase_${s.phase}`];
 
     if (s.festival) {
       festival.hidden = false;

@@ -8,10 +8,8 @@ export const en = {
   emptyWorld: 'No songs on this station yet',
   retry: 'Tap ▶ to retry',
   tapVideo: 'Tap the video to start the music',
-  phase_morning: 'Good morning',
-  phase_afternoon: 'Good afternoon',
-  phase_dusk: 'Dusk at the akhra',
-  phase_night: 'Night has fallen',
+  /** Shown under the wordmark: Jharkhand (Ranchi, the capital), as on the state's Wikipedia infobox. */
+  coords: '23.35° N, 85.33° E',
   world_akhra: 'Love',
   world_trekker: 'Travel',
   world_biha: 'Party',

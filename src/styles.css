@@ -87,7 +87,10 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
   color: #fff8ec; font-weight: 700; letter-spacing: 0;
   font-family: "Kohinoor Devanagari", "Noto Sans Devanagari", "Nirmala UI", "Devanagari Sangam MN", var(--font);
 }
-.greet { margin: 6px 0 0; font-size: 15px; color: #fff8ec; }
+.greet {
+  margin: 6px 0 0; font-size: 13px; letter-spacing: 0.08em; color: #fff8ec;
+  font-variant-numeric: tabular-nums;
+}
 :root[data-phase="afternoon"] .top, :root[data-phase="morning"] .top { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55); }
 
 .festival {
