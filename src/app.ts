@@ -112,6 +112,11 @@ export function createApp(initial: AppState, ytWrap: HTMLElement) {
       store.set({ track: null, status: 'empty' });
       return;
     }
+    if (!yt.created) {
+      // YouTube never loaded (offline or blocked). Keep the scene and ambience going.
+      store.set({ track: null, status: 'nosignal' });
+      return;
+    }
     userPaused = false;
     store.set({ track: t, status: 'tuning' });
     setNowPlaying(t, en[`world_${t.world}`]);
