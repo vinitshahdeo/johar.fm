@@ -437,3 +437,34 @@ export function grassTufts(area: [number, number, number, number], n: number, se
 export function tint(w: number, h: number): string {
   return `<rect class="tint" width="${w}" height="${h}" style="fill:var(--tint);opacity:var(--tint-o)"/>`;
 }
+
+/** A drooping string between two points, as a quadratic curve; returns path + a point sampler. */
+export function sag(x1: number, y1: number, x2: number, y2: number, drop: number) {
+  const cx = (x1 + x2) / 2;
+  const cy = Math.max(y1, y2) + drop;
+  const at = (t: number) => {
+    const u = 1 - t;
+    return [u * u * x1 + 2 * u * t * cx + t * t * x2, u * u * y1 + 2 * u * t * cy + t * t * y2];
+  };
+  return { d: `M${x1} ${y1} Q${cx} ${cy} ${x2} ${y2}`, at };
+}
+
+/** Triangle bunting with small bulbs between flags. Bulb glow goes in the lights layer. */
+export function bunting(x1: number, y1: number, x2: number, y2: number, drop: number, n: number) {
+  const s = sag(x1, y1, x2, y2, drop);
+  const colors = [C.laal, C.marigold, '#2f7d4a', C.saree];
+  let flags = '';
+  let bulbs = '';
+  let glow = '';
+  for (let i = 1; i < n; i++) {
+    const [x, y] = s.at(i / n);
+    flags += `<path d="M${(x - 11).toFixed(1)} ${y.toFixed(1)} L${(x + 11).toFixed(1)} ${y.toFixed(1)} L${x.toFixed(1)} ${(y + 24).toFixed(1)} Z" fill="${colors[i % colors.length]}"/>`;
+    const [bx, by] = s.at((i + 0.5) / n);
+    bulbs += `<circle cx="${bx.toFixed(1)}" cy="${(by + 3).toFixed(1)}" r="3.5" fill="#f3e3b0"/>`;
+    glow += `<circle class="twinkle" style="animation-delay:-${(i % 5) * 0.7}s" cx="${bx.toFixed(1)}" cy="${(by + 3).toFixed(1)}" r="9" fill="url(#lampglow)"/>`;
+  }
+  return {
+    land: `<path d="${s.d}" fill="none" stroke="#3a2b20" stroke-width="2"/>${flags}${bulbs}`,
+    light: glow,
+  };
+}

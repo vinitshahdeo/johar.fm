@@ -57,6 +57,7 @@ app.store.subscribe((s, prev) => {
   if (s.started && !prev.started) overlay.classList.add('gone');
 });
 root.dataset.phase = app.store.get().phase;
+if (festival) root.dataset.festival = festival.id;
 if (world !== 'akhra') void showScene(sceneEl, world);
 
 bindRadio(app);

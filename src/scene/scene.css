@@ -37,3 +37,11 @@
   .scene-svg *, .scene-svg *::before { animation: none !important; transition: none !important; }
   .scene-svg .smoke { opacity: 0.45; }
 }
+
+/* Parab festival props: show the active festival's set; Karam is the default look. */
+.scene-svg .fest { display: none; }
+:root:not([data-festival]) .scene-svg .fest-karam,
+:root[data-festival="karam"] .scene-svg .fest-karam,
+:root[data-festival="sarhul"] .scene-svg .fest-sarhul,
+:root[data-festival="jitiya"] .scene-svg .fest-jitiya,
+:root[data-festival="fagua"] .scene-svg .fest-fagua { display: inline; }

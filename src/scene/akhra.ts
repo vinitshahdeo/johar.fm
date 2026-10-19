@@ -47,7 +47,6 @@ ${mat(620, 850, 210, 52)}
 ${mandar(690, 862, 1)}
 ${nagara(790, 860, 0.8)}
 ${seatedMan(600, 900, { s: 0.95 })}
-${diya(720, 698)}
 ${fireLogs(880, 830)}
 ${smoke(880, 760, 4)}
 ${woman(960, 830, { cls: 'sway-dancer', delay: 0 })}
@@ -62,6 +61,7 @@ ${stars(W, 470, 220, 7, hidden)}
 ${moon(835, 120)}
 ${fireLight(880, 830)}
 ${lanternLight(1160, 520)}
+${diya(720, 698)}
 ${fireflies([0, 620, W, 300], 26, 41)}
 </svg>`;
 }
