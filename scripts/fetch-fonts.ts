@@ -1,7 +1,7 @@
 /**
  * Downloads the self-hosted fonts into public/fonts/ (both SIL Open Font License):
  *
- * - Yatra One (display: wordmark, dial words, overlay greeting), subset by Google Fonts to only the
+ * - Yatra One (display: wordmark, dial words, overlay greeting, trekker sign), subset by Google Fonts to only the
  *   characters the site shows in it. Re-run after changing the Nagpuri words in src/i18n/strings.ts.
  * - Mukta (UI text), Latin subset, weights 400/600/700.
  *

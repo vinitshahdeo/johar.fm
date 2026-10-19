@@ -32,7 +32,7 @@ export const en = {
 export type StringKey = keyof typeof en;
 
 /**
- * Nagpuri word shown under each dial label. Drafts: each is marked `// VERIFY` until a native speaker
+ * Nagpuri word shown under each dial label, plus the route painted on the trekker. Drafts: each is marked `// VERIFY` until a native speaker
  * has checked it (tests/i18n.test.ts enforces the marker while NAG_REVIEWED is false).
  */
 export const NAG_REVIEWED = false;
@@ -42,4 +42,5 @@ export const nag = {
   world_travel: 'डहर', // VERIFY: road, path
   world_party: 'मांदर', // VERIFY: the mandar drum
   world_festive: 'परब', // VERIFY: festival
+  trekker_sign: 'फुलसू से राँची', // VERIFY: "Fulsu se Ranchi", painted on the jeep; check the spelling of Fulsu
 };
