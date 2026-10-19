@@ -1,3 +1,5 @@
+![johar.fm: a village akhra at dusk](public/og.png)
+
 # johar.fm
 
 **Nagpuri radio from Jharkhand.** The header wordmark is written **जोहार.fm**.
@@ -5,8 +7,6 @@
 A radio that never stops, set in one illustrated scene: a village akhra at dusk under sal trees, the
 mandar and nagara resting on a mat, crickets, and the fire just lit. Turn the dial between four moods:
 Love, Travel, Party and Festive. One tap and it plays.
-
-![johar.fm: a village akhra at dusk](public/og.png)
 
 - **Four moods on the dial**, each with its own illustration, playlist and village sounds:
 
@@ -229,15 +229,5 @@ sounds · `M` mute.
 See [CREDITS.md](CREDITS.md) or [/credits](https://johar.fm.vercel.app/credits/). Suggest a song with
 the [issue form](https://github.com/vinitshahdeo/johar.fm/issues/new?template=suggest-a-song.yml).
 
-## Listing in awesome-saloon-wtf
-
-For a PR to [chetanraj/awesome-saloon-wtf](https://github.com/chetanraj/awesome-saloon-wtf), under
-**🌏 Regional → Bhojpuri / East**:
-
-```markdown
-- [johar.fm](https://johar.fm.vercel.app/) - Nagpuri radio from Jharkhand: love, travel, party and festive moods at a village akhra under sal trees (Vinit Shahdeo).
-```
-
----
-
-Made with love from Jharkhand.
+Built in Ranchi, Jharkhand, at **23.35° N, 85.33° E**, by
+[Vinit Shahdeo](https://instagram.com/vinitshahdeo).
