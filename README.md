@@ -23,7 +23,7 @@ Love, Travel, Party and Festive. One tap and it plays.
 - **Songs play from YouTube** using official uploads. Nothing is downloaded or re-hosted.
 - No login, no cookies of our own, no analytics. Lighthouse mobile: 100 / 100 / 100 / 100.
 
-Live at **https://johar.fm.vercel.app**. Design and behaviour are specified in [SPEC.md](SPEC.md).
+Live at **https://johar-fm.vercel.app**. Design and behaviour are specified in [SPEC.md](SPEC.md).
 
 ---
 
@@ -178,10 +178,9 @@ npm run og           # set CHROME_PATH if Chrome isn't in the usual place
 
 1. Push this repo to GitHub and import it at [vercel.com/new](https://vercel.com/new). `vercel.json`
    already sets the framework (Vite), `npm run build` and `dist/`.
-2. After the first deploy, check the URL Vercel actually assigns. The site is configured for
-   `https://johar.fm.vercel.app`, but Vercel may turn the dot into a dash (`johar-fm.vercel.app`).
-   If it differs, or you add a custom domain, change `SITE_URL` in
-   [`src/content/site.ts`](src/content/site.ts) (canonical, sitemap and share tags all read it) and redeploy.
+2. The site is configured for **https://johar-fm.vercel.app**. If you add a custom domain, change
+   `SITE_URL` in [`src/content/site.ts`](src/content/site.ts) (canonical links, sitemap, robots, share
+   tags and the share image all read it), run `npm run og`, and redeploy.
 3. Deploy. The build fetches YouTube oEmbed to verify playlists, which Vercel's build machines can do.
 
 Or from the CLI:
@@ -226,7 +225,7 @@ sounds · `M` mute.
 
 ## Credits
 
-See [CREDITS.md](CREDITS.md) or [/credits](https://johar.fm.vercel.app/credits/). Suggest a song with
+See [CREDITS.md](CREDITS.md) or [/credits](https://johar-fm.vercel.app/credits/). Suggest a song with
 the [issue form](https://github.com/vinitshahdeo/johar.fm/issues/new?template=suggest-a-song.yml).
 
 Built in Ranchi, Jharkhand, at **23.35° N, 85.33° E**, by

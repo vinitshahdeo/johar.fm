@@ -75,6 +75,7 @@ export function htmlPlugin(): Plugin {
           .replace('<!--HEAD-->', `${seoTags()}\n    <style>${paletteCss()}</style>\n    <script>${prePaint}</script>`)
           .replace('<!--SCENE-->', akhraScene())
           .replace(/\{\{site\.suggestUrl\}\}/g, esc(SUGGEST_URL))
+          .replace(/\{\{site\.url\}\}/g, esc(SITE_URL))
           .replace('<!--CREDITS-->', () => markdown(readFileSync(new URL('../CREDITS.md', import.meta.url), 'utf8')))
           .replace(/\{\{(en|nag)\.(\w+)\}\}/g, (m, lang: 'en' | 'nag', key: string) => {
             const table: Record<string, string> = lang === 'nag' ? nag : en;

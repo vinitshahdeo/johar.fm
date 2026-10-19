@@ -18,6 +18,7 @@
   .brand span { color: #b3202a; }
   .deva { color: #b3202a; }
   .en { font-size: 26px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #6b5546; margin-top: 8px; }
+  .url { font-size: 22px; font-weight: 600; color: #b3202a; margin-top: 6px; letter-spacing: .02em; }
 </style>
 </head>
 <body>
@@ -25,11 +26,14 @@
   <div class="card">
     <div class="brand"><span class="deva" lang="hi">जोहार</span><span>.fm</span></div>
     <div class="en">Nagpuri radio from Jharkhand</div>
+    <div class="url" id="url"></div>
   </div>
   <script type="module">
     import '/src/scene/scene.css';
     import { paletteCss } from '/src/scene/palettes.ts';
     import { akhraScene } from '/src/scene/akhra.ts';
+    import { SITE_URL } from '/src/content/site.ts';
+    document.getElementById('url').textContent = SITE_URL.replace(/^https?:\/\//, '');
     const s = document.createElement('style'); s.textContent = paletteCss(); document.head.append(s);
     document.getElementById('scene').innerHTML = akhraScene();
   </script>
