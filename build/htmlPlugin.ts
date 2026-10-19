@@ -4,7 +4,7 @@ import { akhraScene } from '../src/scene/akhra';
 import { paletteCss } from '../src/scene/palettes';
 import { getDayPhase } from '../src/time/dayPhase';
 import { en, nag } from '../src/i18n/strings';
-import { FAQ, SITE_URL } from '../src/content/site';
+import { FAQ, SITE_URL, SUGGEST_URL } from '../src/content/site';
 import { esc } from './html';
 import { markdown } from './markdown';
 
@@ -74,6 +74,7 @@ export function htmlPlugin(): Plugin {
         return html
           .replace('<!--HEAD-->', `${seoTags()}\n    <style>${paletteCss()}</style>\n    <script>${prePaint}</script>`)
           .replace('<!--SCENE-->', akhraScene())
+          .replace(/\{\{site\.suggestUrl\}\}/g, esc(SUGGEST_URL))
           .replace('<!--CREDITS-->', () => markdown(readFileSync(new URL('../CREDITS.md', import.meta.url), 'utf8')))
           .replace(/\{\{(en|nag)\.(\w+)\}\}/g, (m, lang: 'en' | 'nag', key: string) => {
             const table: Record<string, string> = lang === 'nag' ? nag : en;
