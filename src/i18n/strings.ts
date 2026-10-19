@@ -1,5 +1,5 @@
-// All user-facing copy lives here. English only: the one Devanagari word on the site is the
-// "जोहार" in the जोहार.fm wordmark (index.html).
+// All user-facing copy lives here. UI copy is English. Devanagari appears only in the जोहार.fm
+// wordmark (index.html) and in the small Nagpuri word under each dial label (`nag` below).
 
 export const en = {
   tapToTune: 'Tap to tune in',
@@ -30,3 +30,16 @@ export const en = {
 };
 
 export type StringKey = keyof typeof en;
+
+/**
+ * Nagpuri word shown under each dial label. Drafts: each is marked `// VERIFY` until a native speaker
+ * has checked it (tests/i18n.test.ts enforces the marker while NAG_REVIEWED is false).
+ */
+export const NAG_REVIEWED = false;
+
+export const nag = {
+  world_akhra: 'माया', // VERIFY: love
+  world_trekker: 'डहर', // VERIFY: road, path
+  world_biha: 'नाच', // VERIFY: dance
+  world_parab: 'जुड़ाव', // VERIFY: cool, soothing
+};

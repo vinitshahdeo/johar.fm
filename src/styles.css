@@ -161,6 +161,10 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
   transition: color 0.3s;
 }
 .station span { font-size: 13px; line-height: 1.2; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.station small {
+  font-size: 14px; line-height: 1.3; opacity: 0.75;
+  font-family: "Kohinoor Devanagari", "Noto Sans Devanagari", "Nirmala UI", "Devanagari Sangam MN", var(--font);
+}
 .station[aria-pressed="true"] { color: var(--amber); text-shadow: 0 0 10px rgba(245, 197, 107, 0.6); }
 .station.festive::after {
   content: ""; position: absolute; top: 2px; right: 18%; width: 7px; height: 7px; border-radius: 50%;
@@ -245,6 +249,7 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
   .radio::before { top: 4px; height: 7px; background-size: auto 7px; }
   .dial { padding: 12px 4px 2px; }
   .station { min-height: 36px; }
+  .station small { display: none; }
   .now { min-height: 0; padding: 6px 4px 0; }
   .np-title { font-size: 15px; }
   .np-artist { font-size: 13px; }

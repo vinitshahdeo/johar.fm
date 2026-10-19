@@ -140,9 +140,11 @@ their last station and see the glow and a greeting. Test with `?date=YYYY-MM-DD`
 
 ## Copy
 
-All user-facing text is in [`src/i18n/strings.ts`](src/i18n/strings.ts), in English. The only
-Devanagari on the site is जोहार in the जोहार.fm wordmark (`index.html`); a test fails if Devanagari
-appears anywhere else in the page or the strings.
+All user-facing text is in [`src/i18n/strings.ts`](src/i18n/strings.ts), in English. Devanagari
+appears in only two places: जोहार in the जोहार.fm wordmark (`index.html`), and a small Nagpuri word under
+each dial label (`nag` in the strings file: माया, डहर, नाच, जुड़ाव). Those four are drafts marked
+`// VERIFY`; a test fails if a marker goes missing. Once a native speaker has checked them, remove the
+markers and set `NAG_REVIEWED = true`. They're hidden on short screens.
 
 ## Test and build
 
