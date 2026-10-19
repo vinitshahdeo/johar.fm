@@ -1,6 +1,6 @@
 import type { App, AppState } from '../app';
 import { WORLD_IDS, isWorldId, type WorldId } from '../data/worlds';
-import { en, nag } from '../i18n/strings';
+import { en } from '../i18n/strings';
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 
@@ -85,17 +85,17 @@ export function bindRadio(app: App): void {
     play.title = `${playLabel} (Space)`;
 
     if (s.status === 'nosignal') {
-      title.innerHTML = `<span lang="hi">${nag.noSignal}</span> · ${en.noSignal}`;
+      title.textContent = en.noSignal;
       artist.textContent = en.retry;
     } else if (s.status === 'empty') {
-      title.innerHTML = `<span lang="hi">${nag.emptyWorld}</span>`;
-      artist.textContent = en.emptyWorld;
+      title.textContent = en.emptyWorld;
+      artist.textContent = '\u00a0';
     } else if (s.track) {
       title.textContent = s.track.title;
       title.title = s.track.title;
       artist.textContent = s.track.artist;
     } else if (s.status === 'tuning') {
-      title.innerHTML = `<span lang="hi">${nag.tuning}</span>`;
+      title.textContent = en.tuning;
       artist.textContent = '\u00a0';
     }
     if (s.track && s.status !== 'nosignal' && s.status !== 'empty') {
@@ -108,13 +108,11 @@ export function bindRadio(app: App): void {
     }
     amb.setAttribute('aria-pressed', String(s.ambience));
 
-    phaseGreet.textContent = nag[`phase_${s.phase}`];
-    phaseGreet.title = en[`phase_${s.phase}`];
+    phaseGreet.textContent = en[`phase_${s.phase}`];
 
     if (s.festival) {
       festival.hidden = false;
-      festival.innerHTML = `<span lang="hi">${nag[`festival_${s.festival.id}`]}</span>`;
-      festival.title = en[`festival_${s.festival.id}`];
+      festival.textContent = en[`festival_${s.festival.id}`];
     } else festival.hidden = true;
     stations.forEach((b) => b.classList.toggle('festive', !!s.festival && b.dataset.world === 'parab'));
   }

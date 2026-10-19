@@ -1,4 +1,7 @@
-# mandar.fm — Spec (v0.2, approved)
+# johar.fm — Spec (v0.3)
+
+> Renamed from mandar.fm on 2026-10-19; see §11 decision 9. Sections below keep the original wording
+> where they describe internals (world ids, scenes, sounds).
 
 A Nagpuri/Sadri nostalgia radio for Jharkhand: one illustrated scene, a radio that never stops,
 ambient sound underneath, zero friction. Static site, no backend, no login, no cookies.
@@ -343,6 +346,12 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
    size. The footer is removed; one line under the radio keeps "Made with love from Jharkhand", Credits
    and Suggest a song. The visible FAQ, artist channel links and keyboard-shortcut list are dropped from
    the page (FAQ stays in JSON-LD; shortcuts stay in button tooltips). This supersedes the footer in §10.
+9. **Rename + English copy (2026-10-19):** the product is **johar.fm**; the header wordmark is
+   **जोहार.fm**, the only Devanagari on the site. All other copy is English (supersedes §9's Nagpuri
+   strings and the `// VERIFY` workflow). Dial labels are **Love, Travel, Party, Relaxed** for the
+   `akhra`, `trekker`, `biha` and `parab` worlds respectively; internal ids, scenes, playlists and
+   ambience are unchanged. The localStorage key is now `joharfm:v1`. `SITE_URL`
+   (`https://mandar.fm.vercel.app`) and the GitHub repo name (`vinitshahdeo/mandar.fm`) are unchanged.
 
 ---
 

@@ -33,7 +33,7 @@ export function setNowPlaying(track: Track, worldName: string): void {
   s.metadata = new MediaMetadata({
     title: track.title,
     artist: track.artist,
-    album: `mandar.fm · ${worldName}`,
+    album: `johar.fm · ${worldName}`,
     artwork: [{ src: '/icon-512.png', sizes: '512x512', type: 'image/png' }],
   });
 }

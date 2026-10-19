@@ -3,14 +3,14 @@ import type { Plugin } from 'vite';
 import { akhraScene } from '../src/scene/akhra';
 import { paletteCss } from '../src/scene/palettes';
 import { getDayPhase } from '../src/time/dayPhase';
-import { en, nag } from '../src/i18n/strings';
+import { en } from '../src/i18n/strings';
 import { FAQ, SITE_URL } from '../src/content/site';
 import { esc } from './html';
 import { markdown } from './markdown';
 
-const TITLE = 'mandar.fm — Nagpuri radio from Jharkhand | मांदर एफएम';
+const TITLE = 'johar.fm — Nagpuri radio from Jharkhand';
 const DESCRIPTION =
-  'A Nagpuri radio that never stops: theth Nagpuri, jhumar, trekker hits, biha and parab songs, under sal trees at a village akhra. नागपुरी गीत, अखड़ा, जोहार।';
+  'A Nagpuri radio from Jharkhand that never stops. Four moods (love, travel, party and relaxed) under the sal trees of a village akhra.';
 
 function seoTags(): string {
   const jsonLd = {
@@ -18,10 +18,9 @@ function seoTags(): string {
     '@graph': [
       {
         '@type': 'WebSite',
-        name: 'mandar.fm',
-        alternateName: 'मांदर एफएम',
+        name: 'johar.fm',
         url: `${SITE_URL}/`,
-        inLanguage: ['en', 'hi', 'sck'],
+        inLanguage: 'en',
         description: DESCRIPTION,
       },
       {
@@ -38,14 +37,14 @@ function seoTags(): string {
   return [
     `<link rel="canonical" href="${SITE_URL}/" />`,
     `<meta property="og:type" content="website" />`,
-    `<meta property="og:site_name" content="mandar.fm" />`,
+    `<meta property="og:site_name" content="johar.fm" />`,
     `<meta property="og:title" content="${esc(TITLE)}" />`,
     `<meta property="og:description" content="${esc(DESCRIPTION)}" />`,
     `<meta property="og:url" content="${SITE_URL}/" />`,
     `<meta property="og:image" content="${og}" />`,
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
-    `<meta property="og:image:alt" content="A village akhra at dusk under sal trees, with the mandar.fm radio." />`,
+    `<meta property="og:image:alt" content="A village akhra at dusk under sal trees, with the johar.fm radio." />`,
     `<meta property="og:locale" content="en_IN" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${esc(TITLE)}" />`,
@@ -61,13 +60,13 @@ function seoTags(): string {
  * - the default Akhra scene SVG (renders before any JS, and is the LCP element),
  * - phase palettes as CSS custom properties,
  * - a tiny pre-paint script that sets data-phase from the local clock (same function as the app),
- * - i18n strings for {{nag.key}} / {{en.key}} placeholders,
+ * - i18n strings for {{en.key}} placeholders,
  * - SEO tags and JSON-LD, and the rendered CREDITS.md.
  * Also emits sitemap.xml and robots.txt.
  */
 export function htmlPlugin(): Plugin {
   return {
-    name: 'mandarfm-html',
+    name: 'joharfm-html',
     transformIndexHtml: {
       order: 'pre',
       handler(html) {
@@ -76,10 +75,9 @@ export function htmlPlugin(): Plugin {
           .replace('<!--HEAD-->', `${seoTags()}\n    <style>${paletteCss()}</style>\n    <script>${prePaint}</script>`)
           .replace('<!--SCENE-->', akhraScene())
           .replace('<!--CREDITS-->', () => markdown(readFileSync(new URL('../CREDITS.md', import.meta.url), 'utf8')))
-          .replace(/\{\{(nag|en)\.(\w+)\}\}/g, (m, lang: 'nag' | 'en', key: string) => {
-            const table = (lang === 'nag' ? nag : en) as Record<string, string>;
-            if (!(key in table)) throw new Error(`HTML: unknown string ${m}`);
-            return esc(table[key]);
+          .replace(/\{\{en\.(\w+)\}\}/g, (m, key: string) => {
+            if (!(key in en)) throw new Error(`HTML: unknown string ${m}`);
+            return esc(en[key as keyof typeof en]);
           });
       },
     },

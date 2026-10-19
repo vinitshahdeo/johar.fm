@@ -66,7 +66,7 @@ export function createApp(initial: AppState, ytWrap: HTMLElement) {
       // Dead, private, or embed-blocked: drop it for this session and move on silently.
       const t = store.get().track;
       if (t) bags.get(t.world)?.markFailed(t.youtubeId);
-      console.info(`[mandar.fm] skipped ${t?.youtubeId} (YouTube error ${code})`);
+      console.info(`[johar.fm] skipped ${t?.youtubeId} (YouTube error ${code})`);
       next();
     },
   });

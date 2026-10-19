@@ -1,27 +1,21 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { DIALECT_REVIEWED, en, nag } from '../src/i18n/strings';
+import { en } from '../src/i18n/strings';
 
-const source = readFileSync(new URL('../src/i18n/strings.ts', import.meta.url), 'utf8');
-const nagBlock = source.slice(source.indexOf('export const nag = {'), source.indexOf('} as const;'));
-const entryLines = nagBlock.split('\n').filter((l) => /^\s+\w+:\s*'/.test(l));
+const DEVANAGARI = /[ऀ-ॿ]/;
 
 describe('i18n', () => {
-  it('finds every nag entry in the source', () => {
-    expect(entryLines).toHaveLength(Object.keys(nag).length);
+  it('has no empty strings', () => {
+    for (const v of Object.values(en)) expect(v.trim()).not.toBe('');
   });
 
-  it.runIf(!DIALECT_REVIEWED)('marks every Nagpuri string // VERIFY until the dialect is reviewed', () => {
-    const unmarked = entryLines.filter((l) => !/\/\/\s*VERIFY\b/.test(l)).map((l) => l.trim());
-    expect(unmarked).toEqual([]);
+  it('keeps UI copy in English (Devanagari only in the wordmark)', () => {
+    for (const v of Object.values(en)) expect(v).not.toMatch(DEVANAGARI);
   });
 
-  it('has an English string for every key, and no empty strings', () => {
-    expect(Object.keys(en).sort()).toEqual(Object.keys(nag).sort());
-    for (const v of [...Object.values(nag), ...Object.values(en)]) expect(v.trim()).not.toBe('');
-  });
-
-  it('writes Nagpuri in Devanagari', () => {
-    for (const v of Object.values(nag)) expect(v).toMatch(/[ऀ-ॿ]/);
+  it('uses Devanagari in index.html only for the जोहार wordmark', () => {
+    const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+    const words = html.match(/[ऀ-ॿ]+/g) ?? [];
+    expect(words).toEqual(['जोहार']);
   });
 });

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>mandar.fm — Nagpuri radio from Jharkhand | मांदर एफएम</title>
-    <meta name="description" content="A Nagpuri radio that never stops: theth Nagpuri, jhumar, trekker hits, biha and parab songs, under sal trees at a village akhra. नागपुरी गीत, अखड़ा, जोहार।" />
+    <title>johar.fm — Nagpuri radio from Jharkhand</title>
+    <meta name="description" content="A Nagpuri radio from Jharkhand that never stops. Four moods (love, travel, party and relaxed) under the sal trees of a village akhra." />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#b3202a" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -12,16 +12,13 @@
   </head>
   <body>
     <main>
-      <section class="stage" aria-label="mandar.fm">
+      <section class="stage" aria-label="johar.fm">
         <div id="scene" class="scene" data-scene="akhra"><!--SCENE--></div>
         <div id="yt-wrap" class="yt-wrap" aria-hidden="true"><div id="yt"></div></div>
 
         <header class="top">
-          <h1 class="brand">mandar<span>.fm</span></h1>
-          <p class="greet">
-            <span class="nag" lang="hi">{{nag.greeting}}</span>
-            <span class="phase-greet" lang="hi" id="phase-greet"></span>
-          </p>
+          <h1 class="brand" aria-label="johar.fm"><span class="brand-deva" lang="hi" aria-hidden="true">जोहार</span><span aria-hidden="true">.fm</span></h1>
+          <p class="greet" id="phase-greet"></p>
         </header>
 
         <p id="festival" class="festival" role="status" hidden></p>
@@ -31,10 +28,10 @@
           <div class="dial" id="dial" role="group" aria-label="Choose a world">
             <div class="dial-scale" aria-hidden="true"></div>
             <div class="dial-needle" id="needle" aria-hidden="true"></div>
-            <button class="station" data-world="akhra" aria-pressed="true"><span lang="hi">{{nag.world_akhra}}</span><small>{{en.world_akhra}}</small></button>
-            <button class="station" data-world="trekker" aria-pressed="false"><span lang="hi">{{nag.world_trekker}}</span><small>{{en.world_trekker}}</small></button>
-            <button class="station" data-world="biha" aria-pressed="false"><span lang="hi">{{nag.world_biha}}</span><small>{{en.world_biha}}</small></button>
-            <button class="station" data-world="parab" aria-pressed="false"><span lang="hi">{{nag.world_parab}}</span><small>{{en.world_parab}}</small></button>
+            <button class="station" data-world="akhra" aria-pressed="true"><span>{{en.world_akhra}}</span></button>
+            <button class="station" data-world="trekker" aria-pressed="false"><span>{{en.world_trekker}}</span></button>
+            <button class="station" data-world="biha" aria-pressed="false"><span>{{en.world_biha}}</span></button>
+            <button class="station" data-world="parab" aria-pressed="false"><span>{{en.world_parab}}</span></button>
           </div>
 
           <div class="now" aria-live="polite">
@@ -67,7 +64,7 @@
         </section>
 
           <p class="credit-line">
-            <span lang="hi" title="{{en.madeWithLove}}">{{nag.madeWithLove}}</span><span class="love-en"> · {{en.madeWithLove}}</span>
+            {{en.madeWithLove}}
             · <a href="/credits/">Credits</a>
             · <a href="https://github.com/vinitshahdeo/mandar.fm/issues/new?template=suggest-a-song.yml" target="_blank" rel="noopener">{{en.suggest}}</a>
           </p>
@@ -75,8 +72,7 @@
 
         <div class="overlay" id="overlay">
           <button class="tune" id="tune">
-            <span class="tune-greet" lang="hi">{{nag.greeting}}</span>
-            <span class="tune-nag" lang="hi">{{nag.tapToTune}}</span>
+            <span class="tune-greet">Johar!</span>
             <span class="tune-en">{{en.tapToTune}}</span>
           </button>
         </div>

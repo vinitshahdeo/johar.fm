@@ -9,7 +9,7 @@ export interface Prefs {
   ambience: boolean;
 }
 
-export const STORAGE_KEY = 'mandarfm:v1';
+export const STORAGE_KEY = 'joharfm:v1';
 
 export const DEFAULT_PREFS: Prefs = { world: 'akhra', volume: 70, ambience: true };
 

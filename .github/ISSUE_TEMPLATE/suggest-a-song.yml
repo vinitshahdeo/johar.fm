@@ -1,5 +1,5 @@
 name: Suggest a song
-description: Suggest a Nagpuri / Sadri song for mandar.fm
+description: Suggest a Nagpuri / Sadri song for johar.fm
 title: "Song: "
 labels: ["song-suggestion"]
 body:
@@ -32,12 +32,12 @@ body:
   - type: dropdown
     id: world
     attributes:
-      label: Which world does it belong in?
+      label: Which mood does it fit?
       options:
-        - Akhra (theth Nagpuri, jhumar, folk)
-        - Trekker (2000s–2010s Nagpuri pop, DJ remix)
-        - Biha (wedding, domkach)
-        - Parab (Karam, Sarhul, Jitiya, Fagua)
+        - Love
+        - Travel
+        - Party
+        - Relaxed
     validations:
       required: true
   - type: input

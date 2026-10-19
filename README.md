@@ -1,18 +1,23 @@
-# mandar.fm
+# johar.fm
 
-**Nagpuri radio from Jharkhand. जोहार!**
+**Nagpuri radio from Jharkhand.** The header wordmark is written **जोहार.fm**.
 
 A radio that never stops, set in one illustrated scene: a village akhra at dusk under sal trees, the
-mandar and nagara resting on a mat, crickets, and the fire just lit. Turn the dial to ride a
-trekker down a ghat road, walk into a biha, or join the parab. One tap and it plays.
+mandar and nagara resting on a mat, crickets, and the fire just lit. Turn the dial between four moods:
+Love, Travel, Party and Relaxed. One tap and it plays.
 
-![mandar.fm: a village akhra at dusk](public/og.png)
+![johar.fm: a village akhra at dusk](public/og.png)
 
-- **Four worlds**, each with its own illustration, playlist and village sounds: Akhra (theth Nagpuri,
-  jhumar), Trekker (2000s–2010s Nagpuri pop and remixes), Biha (wedding, domkach), Parab (Karam,
-  Sarhul, Jitiya, Fagua).
+- **Four moods on the dial**, each with its own illustration, playlist and village sounds:
+
+  | Dial label | Internal id (`world` in playlists.json) | Scene |
+  |---|---|---|
+  | Love | `akhra` | Village akhra at dusk under sal trees |
+  | Travel | `trekker` | Overloaded trekker on a ghat road |
+  | Party | `biha` | Wedding courtyard with the madwa |
+  | Relaxed | `parab` | Festival akhra (Karam, Sarhul, Jitiya, Fagua props) |
 - **Follows your clock.** Morning, afternoon, dusk and night each have their own look; lanterns and the
-  fire glow after dark. During a festival the Parab station lights up.
+  fire glow after dark. During a festival the Relaxed (`parab`) station lights up.
 - **Village sounds** (crickets, wind in the sal, a distant mandar, the trekker's engine and horn) are
   synthesised in the browser. No sound files.
 - **Songs play from YouTube** using official uploads. Nothing is downloaded or re-hosted.
@@ -62,12 +67,12 @@ Songs live in [`src/data/playlists.json`](src/data/playlists.json):
 
 | Field | |
 |---|---|
-| `world` | `akhra`, `trekker`, `biha` or `parab` |
+| `world` | `akhra` (Love), `trekker` (Travel), `biha` (Party) or `parab` (Relaxed) |
 | `title`, `artist` | Shown in the radio and on the lock screen |
 | `youtubeId` | The 11-character ID from `youtube.com/watch?v=…`. Leave `""` for a placeholder. |
 | `startAt` | Optional. Seconds to skip (long intros). |
 | `notes` | Optional. For you; not shown. |
-| `festival` | Optional, Parab only: `karam`, `sarhul`, `jitiya` or `fagua`. These songs come up 3× as often during that festival. |
+| `festival` | Optional, `parab` (Relaxed) only: `karam`, `sarhul`, `jitiya` or `fagua`. These songs come up 3× as often during that festival. |
 | `titleMatch` | Optional. Part of the real YouTube title, if the verifier can't match your `title` (see below). |
 
 Rules:
@@ -129,15 +134,15 @@ year's dates from a calendar you trust:
 ]
 ```
 
-The Parab station starts glowing `leadDays` (default 7) before `start` and stops `trailDays`
-(default 2) after `end`. First-time visitors land on Parab during that window; returning visitors keep
+The Relaxed (`parab`) station starts glowing `leadDays` (default 7) before `start` and stops `trailDays`
+(default 2) after `end`. First-time visitors land on it during that window; returning visitors keep
 their last station and see the glow and a greeting. Test with `?date=YYYY-MM-DD`.
 
-## Nagpuri copy
+## Copy
 
-All user-facing text is in [`src/i18n/strings.ts`](src/i18n/strings.ts). Every Nagpuri/Sadri line is
-a draft marked `// VERIFY`, and a test fails if any loses its marker. Once a native speaker has checked
-them, remove the markers and set `DIALECT_REVIEWED = true`.
+All user-facing text is in [`src/i18n/strings.ts`](src/i18n/strings.ts), in English. The only
+Devanagari on the site is जोहार in the जोहार.fm wordmark (`index.html`); a test fails if Devanagari
+appears anywhere else in the page or the strings.
 
 ## Test and build
 
@@ -193,7 +198,7 @@ src/
   app.ts               player controller: queue, YouTube, watchdog, ambience, prefs
   main.ts              boot: clock, festival, first-visit logic, wiring
   data/                playlists.json, artists.json, festivals.json, worlds
-  i18n/strings.ts      all copy; Nagpuri marked // VERIFY
+  i18n/strings.ts      all copy (English)
   time/                dayPhase.ts, festival.ts (pure, unit-tested)
   player/              youtube.ts, queue.ts (shuffle bag), mediaSession.ts
   ambience/            Web Audio engine, synthesised layers, per-world recipes
@@ -222,9 +227,9 @@ For a PR to [chetanraj/awesome-saloon-wtf](https://github.com/chetanraj/awesome-
 **🌏 Regional → Bhojpuri / East**:
 
 ```markdown
-- [mandar.fm](https://mandar.fm.vercel.app/) - Nagpuri radio from Jharkhand: theth Nagpuri, jhumar and trekker hits at a village akhra under sal trees (Vinit Shahdeo).
+- [johar.fm](https://mandar.fm.vercel.app/) - Nagpuri radio from Jharkhand: love, travel, party and relaxed moods at a village akhra under sal trees (Vinit Shahdeo).
 ```
 
 ---
 
-Made with love from Jharkhand. झारखंड ले माया संगे बनाल।
+Made with love from Jharkhand.

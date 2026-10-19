@@ -2,7 +2,7 @@
 
 ## Music
 
-Every song on mandar.fm streams from YouTube through the official embedded player, preferably from
+Every song on johar.fm streams from YouTube through the official embedded player, preferably from
 the artist's or label's own channel. Nothing is downloaded, copied or re-hosted. All rights stay with
 the artists, lyricists, composers and labels, and every play counts as a view for them.
 
@@ -46,15 +46,15 @@ title, author, source URL, licence and date accessed.
 
 ## Artwork
 
-All illustrations are original SVG drawn in code for mandar.fm. The wall borders and motifs are
+All illustrations are original SVG drawn in code for johar.fm. The wall borders and motifs are
 *inspired by* Sohrai and Khovar wall painting, the living art of women in Hazaribagh and across
 Jharkhand. No existing artwork was traced or copied. Colours take after the laal paar saree, sal forest
 and red laterite soil.
 
 ## Fonts
 
-mandar.fm uses your device's own fonts (Noto Sans Devanagari, Kohinoor Devanagari, Nirmala UI and
-similar). No web fonts are downloaded.
+johar.fm uses your device's own fonts (the Devanagari in the logo uses Kohinoor Devanagari, Noto Sans
+Devanagari, Nirmala UI or similar). No web fonts are downloaded.
 
 ## Built with
 

@@ -11,7 +11,6 @@
   --earth: #1b1410;
   --sohrai: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14'%3E%3Crect width='28' height='14' fill='%23f3eadb'/%3E%3Cpath d='M0 3 L7 9 L14 3 L21 9 L28 3' fill='none' stroke='%23b3202a' stroke-width='2'/%3E%3Ccircle cx='7' cy='12.2' r='1.3' fill='%232a1d16'/%3E%3Ccircle cx='21' cy='12.2' r='1.3' fill='%232a1d16'/%3E%3C/svg%3E");
   --font: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Devanagari", "Kohinoor Devanagari", "Nirmala UI", sans-serif;
-  --font-nag: "Noto Serif Devanagari", "Kohinoor Devanagari", "Devanagari Sangam MN", "Nirmala UI", "Noto Sans Devanagari", serif;
   color-scheme: light;
 }
 
@@ -25,7 +24,6 @@ body {
   font: 16px/1.5 var(--font);
   -webkit-font-smoothing: antialiased;
 }
-[lang="hi"] { font-family: var(--font-nag); }
 button { font: inherit; color: inherit; }
 a { color: inherit; }
 .sr {
@@ -85,8 +83,11 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
   color: #fff8ec;
 }
 .brand span { color: var(--amber); }
+.brand .brand-deva {
+  color: #fff8ec; font-weight: 700; letter-spacing: 0;
+  font-family: "Kohinoor Devanagari", "Noto Sans Devanagari", "Nirmala UI", "Devanagari Sangam MN", var(--font);
+}
 .greet { margin: 6px 0 0; font-size: 15px; color: #fff8ec; }
-.greet .nag { font-size: 20px; margin-right: 6px; }
 :root[data-phase="afternoon"] .top, :root[data-phase="morning"] .top { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55); }
 
 .festival {
@@ -108,10 +109,8 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
 .credit-line {
   margin: 0; text-align: center; font-size: 12px; line-height: 1.4; color: #fff8ec;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .credit-line a { color: var(--amber); text-decoration: none; }
-@media (max-width: 560px) { .credit-line .love-en { display: none; } }
 .credit-line a:hover, .credit-line a:focus-visible { text-decoration: underline; }
 
 /* ---------- radio ---------- */
@@ -161,8 +160,7 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
   background: transparent; color: rgba(245, 197, 107, 0.55); cursor: pointer;
   transition: color 0.3s;
 }
-.station span { font-size: 18px; line-height: 1.2; }
-.station small { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+.station span { font-size: 13px; line-height: 1.2; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
 .station[aria-pressed="true"] { color: var(--amber); text-shadow: 0 0 10px rgba(245, 197, 107, 0.6); }
 .station.festive::after {
   content: ""; position: absolute; top: 2px; right: 18%; width: 7px; height: 7px; border-radius: 50%;
@@ -221,8 +219,7 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
   animation: ring 2.2s ease-out infinite;
 }
 @keyframes ring { from { transform: scale(0.96); opacity: 1; } to { transform: scale(1.12); opacity: 0; } }
-.tune-greet { font-size: 40px; line-height: 1.1; color: var(--laal); }
-.tune-nag { font-size: 19px; }
+.tune-greet { font-size: 38px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; color: var(--laal); }
 .tune-en { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 
 /* Portrait phones: end the scene at the top of the radio (measured into --dock-h by main.ts) so the
@@ -237,8 +234,7 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
 
 @media (max-width: 380px) {
   .radio { padding: 16px 10px 10px; }
-  .station span { font-size: 16px; }
-  .station small { font-size: 10px; letter-spacing: 0.02em; }
+  .station span { font-size: 12px; letter-spacing: 0.06em; }
   .controls { gap: 6px; }
 }
 /* Short screens (landscape phones, small laptops): tighten the radio so scene + radio fit. */
@@ -249,7 +245,6 @@ html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: n
   .radio::before { top: 4px; height: 7px; background-size: auto 7px; }
   .dial { padding: 12px 4px 2px; }
   .station { min-height: 36px; }
-  .station small { display: none; }
   .now { min-height: 0; padding: 6px 4px 0; }
   .np-title { font-size: 15px; }
   .np-artist { font-size: 13px; }
