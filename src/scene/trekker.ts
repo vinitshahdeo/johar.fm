@@ -55,6 +55,40 @@ function paintedSign(text: string): string {
   </g>`;
 }
 
+/**
+ * Green roadside direction sign on the far edge of the road, some way ahead of the jeep: a striped
+ * post with one arrow-shaped board pointing right, back the way the jeep came (towards Fulsu).
+ */
+function roadSign(x: number, baseY: number, text: string): string {
+  const w = 162;
+  const h = 30;
+  const tip = 13;
+  const board = (y: number, dir: 'left' | 'right', text: string) => {
+    const l = x + 2;
+    const r = l + w;
+    const pts =
+      dir === 'left'
+        ? `${l},${y + h / 2} ${l + tip},${y} ${r},${y} ${r},${y + h} ${l + tip},${y + h}`
+        : `${l},${y} ${r - tip},${y} ${r},${y + h / 2} ${r - tip},${y + h} ${l},${y + h}`;
+    const ay = y + h / 2;
+    const arrow =
+      dir === 'left'
+        ? `<path d="M${l + 18} ${ay} h14 M${l + 18} ${ay} l6 -5 M${l + 18} ${ay} l6 5"/>`
+        : `<path d="M${r - 18} ${ay} h-14 M${r - 18} ${ay} l-6 -5 M${r - 18} ${ay} l-6 5"/>`;
+    const tx = dir === 'left' ? l + 38 : l + 8;
+    return `<polygon points="${pts}" fill="#1f6b3a" stroke="#f4ebdd" stroke-width="2" stroke-linejoin="round"/>
+      <g stroke="#f4ebdd" stroke-width="2.5" stroke-linecap="round" fill="none">${arrow}</g>
+      <text x="${tx}" y="${ay + 6}" font-size="15" fill="#f4ebdd" font-family="'Yatra One', 'Kohinoor Devanagari', 'Noto Sans Devanagari', sans-serif" lang="hi">${text}</text>`;
+  };
+  let stripes = '';
+  for (let y = baseY - 140; y < baseY; y += 18) stripes += `<rect x="${x - 3}" y="${y}" width="6" height="9" fill="#1a1a1a"/>`;
+  return `<g>
+  <ellipse cx="${x}" cy="${baseY}" rx="11" ry="3" fill="#000" opacity=".25"/>
+  <rect x="${x - 3}" y="${baseY - 140}" width="6" height="140" fill="#e8e2d3"/>${stripes}
+  ${board(baseY - 138, 'right', text)}
+</g>`;
+}
+
 function wheel(x: number, y: number): string {
   let spokes = '';
   for (let i = 0; i < 6; i++) spokes += `<path d="M0 0 L${Math.round(Math.cos((i * Math.PI) / 3) * 16)} ${Math.round(Math.sin((i * Math.PI) / 3) * 16)}"/>`;
@@ -169,6 +203,7 @@ ${parapet}
 <path d="M0 915 C420 890 1000 905 1600 870 L1600 1000 L0 1000 Z" fill="#2c4a26"/>
 ${treeLine(0, W, (x) => 960 - Math.sin(x / 200) * 10, C.leafDeep, 24)}
 ${smoke(1060, 790, 3).replace('#d8d2cc', '#c9a27a')}
+${roadSign(300, 778, nag.road_sign)}
 <g transform="translate(820 845)">${trekker()}</g>
 ${tint(W, H)}
 ${stars(W, 430, 200, 17, hidden)}

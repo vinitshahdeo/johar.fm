@@ -43,4 +43,5 @@ export const nag = {
   world_party: 'मांदर', // VERIFY: the mandar drum
   world_festive: 'परब', // VERIFY: festival
   trekker_sign: 'फुलसू से राँची', // VERIFY: "Fulsu se Ranchi", painted on the jeep; check the spelling of Fulsu
+  road_sign: 'फुलसू 16 कि.मी.', // VERIFY: road sign ahead of the jeep, arrow pointing back towards Fulsu
 };
