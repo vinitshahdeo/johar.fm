@@ -13,7 +13,7 @@ export const en = {
   world_akhra: 'Love',
   world_trekker: 'Travel',
   world_biha: 'Party',
-  world_parab: 'Relaxed',
+  world_parab: 'Festive',
   festival_karam: 'Happy Karam',
   festival_sarhul: 'Happy Sarhul',
   festival_jitiya: 'Happy Jitiya',
@@ -38,6 +38,6 @@ export const NAG_REVIEWED = false;
 export const nag = {
   world_akhra: 'माया', // VERIFY: love
   world_trekker: 'डहर', // VERIFY: road, path
-  world_biha: 'नाच', // VERIFY: dance
-  world_parab: 'जुड़ाव', // VERIFY: cool, soothing
+  world_biha: 'मांदर', // VERIFY: the mandar drum
+  world_parab: 'परब', // VERIFY: festival
 };

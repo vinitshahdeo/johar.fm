@@ -10,7 +10,7 @@ import { markdown } from './markdown';
 
 const TITLE = 'johar.fm — Nagpuri radio from Jharkhand';
 const DESCRIPTION =
-  'A Nagpuri radio from Jharkhand that never stops. Four moods (love, travel, party and relaxed) under the sal trees of a village akhra.';
+  'A Nagpuri radio from Jharkhand that never stops. Four moods (love, travel, party and festive) under the sal trees of a village akhra.';
 
 function seoTags(): string {
   const jsonLd = {

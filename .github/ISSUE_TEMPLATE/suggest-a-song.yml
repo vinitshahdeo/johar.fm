@@ -37,7 +37,7 @@ body:
         - Love
         - Travel
         - Party
-        - Relaxed
+        - Festive
     validations:
       required: true
   - type: input

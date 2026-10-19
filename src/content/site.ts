@@ -5,7 +5,7 @@ export const SUGGEST_URL = `https://github.com/${REPO}/issues/new?template=sugge
 export const FAQ: { q: string; a: string }[] = [
   {
     q: 'What is johar.fm?',
-    a: 'johar.fm is a free Nagpuri/Sadri radio from Jharkhand. Pick a mood (Love, Travel, Party or Relaxed), tap once, and it keeps playing theth Nagpuri, jhumar, 2000s trekker hits, wedding and festival songs over the sounds of a village evening.',
+    a: 'johar.fm is a free Nagpuri/Sadri radio from Jharkhand. Pick a mood (Love, Travel, Party or Festive), tap once, and it keeps playing theth Nagpuri, jhumar, 2000s trekker hits, wedding and festival songs over the sounds of a village evening.',
   },
   {
     q: 'Where does the music come from?',

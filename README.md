@@ -4,7 +4,7 @@
 
 A radio that never stops, set in one illustrated scene: a village akhra at dusk under sal trees, the
 mandar and nagara resting on a mat, crickets, and the fire just lit. Turn the dial between four moods:
-Love, Travel, Party and Relaxed. One tap and it plays.
+Love, Travel, Party and Festive. One tap and it plays.
 
 ![johar.fm: a village akhra at dusk](public/og.png)
 
@@ -15,9 +15,9 @@ Love, Travel, Party and Relaxed. One tap and it plays.
   | Love | `akhra` | Village akhra at dusk under sal trees |
   | Travel | `trekker` | Overloaded trekker on a ghat road |
   | Party | `biha` | Wedding courtyard with the madwa |
-  | Relaxed | `parab` | Festival akhra (Karam, Sarhul, Jitiya, Fagua props) |
+  | Festive | `parab` | Festival akhra (Karam, Sarhul, Jitiya, Fagua props) |
 - **Follows your clock.** Morning, afternoon, dusk and night each have their own look; lanterns and the
-  fire glow after dark. During a festival the Relaxed (`parab`) station lights up.
+  fire glow after dark. During a festival the Festive (`parab`) station lights up.
 - **Village sounds** (crickets, wind in the sal, a distant mandar, the trekker's engine and horn) are
   synthesised in the browser. No sound files.
 - **Songs play from YouTube** using official uploads. Nothing is downloaded or re-hosted.
@@ -67,12 +67,12 @@ Songs live in [`src/data/playlists.json`](src/data/playlists.json):
 
 | Field | |
 |---|---|
-| `world` | `akhra` (Love), `trekker` (Travel), `biha` (Party) or `parab` (Relaxed) |
+| `world` | `akhra` (Love), `trekker` (Travel), `biha` (Party) or `parab` (Festive) |
 | `title`, `artist` | Shown in the radio and on the lock screen |
 | `youtubeId` | The 11-character ID from `youtube.com/watch?v=…`. Leave `""` for a placeholder. |
 | `startAt` | Optional. Seconds to skip (long intros). |
 | `notes` | Optional. For you; not shown. |
-| `festival` | Optional, `parab` (Relaxed) only: `karam`, `sarhul`, `jitiya` or `fagua`. These songs come up 3× as often during that festival. |
+| `festival` | Optional, `parab` (Festive) only: `karam`, `sarhul`, `jitiya` or `fagua`. These songs come up 3× as often during that festival. |
 | `titleMatch` | Optional. Part of the real YouTube title, if the verifier can't match your `title` (see below). |
 
 Rules:
@@ -134,7 +134,7 @@ year's dates from a calendar you trust:
 ]
 ```
 
-The Relaxed (`parab`) station starts glowing `leadDays` (default 7) before `start` and stops `trailDays`
+The Festive (`parab`) station starts glowing `leadDays` (default 7) before `start` and stops `trailDays`
 (default 2) after `end`. First-time visitors land on it during that window; returning visitors keep
 their last station and see the glow and a greeting. Test with `?date=YYYY-MM-DD`.
 
@@ -142,7 +142,7 @@ their last station and see the glow and a greeting. Test with `?date=YYYY-MM-DD`
 
 All user-facing text is in [`src/i18n/strings.ts`](src/i18n/strings.ts), in English. Devanagari
 appears in only two places: जोहार in the जोहार.fm wordmark (`index.html`), and a small Nagpuri word under
-each dial label (`nag` in the strings file: माया, डहर, नाच, जुड़ाव). Those four are drafts marked
+each dial label (`nag` in the strings file: माया, डहर, मांदर, परब). Those four are drafts marked
 `// VERIFY`; a test fails if a marker goes missing. Once a native speaker has checked them, remove the
 markers and set `NAG_REVIEWED = true`. They're hidden on short screens.
 
@@ -229,7 +229,7 @@ For a PR to [chetanraj/awesome-saloon-wtf](https://github.com/chetanraj/awesome-
 **🌏 Regional → Bhojpuri / East**:
 
 ```markdown
-- [johar.fm](https://mandar.fm.vercel.app/) - Nagpuri radio from Jharkhand: love, travel, party and relaxed moods at a village akhra under sal trees (Vinit Shahdeo).
+- [johar.fm](https://mandar.fm.vercel.app/) - Nagpuri radio from Jharkhand: love, travel, party and festive moods at a village akhra under sal trees (Vinit Shahdeo).
 ```
 
 ---
