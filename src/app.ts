@@ -2,6 +2,7 @@ import { tracksFor, type Track } from './data/playlists';
 import { WORLD_IDS, type WorldId } from './data/worlds';
 import { en } from './i18n/strings';
 import { ShuffleBag } from './player/queue';
+import { startOffset } from './player/offset';
 import { State, YouTubeAudio } from './player/youtube';
 import { initMediaSession, setNowPlaying, setPlaybackState } from './player/mediaSession';
 import { createStore } from './store';
@@ -102,7 +103,8 @@ export function createApp(initial: AppState, ytWrap: HTMLElement) {
     document.querySelector('.yt-hint')?.remove();
   }
 
-  function next() {
+  /** Next track in the current world. `joinLate` (after a station switch) starts it mid-song. */
+  function load(joinLate: boolean) {
     const st = store.get();
     if (!st.started) return;
     const t = bags.get(st.world)!.next();
@@ -120,10 +122,13 @@ export function createApp(initial: AppState, ytWrap: HTMLElement) {
     userPaused = false;
     store.set({ track: t, status: 'tuning' });
     setNowPlaying(t, en[`world_${t.world}`]);
-    yt.load(t.youtubeId, t.startAt ?? 0);
+    yt.load(t.youtubeId, startOffset(t, joinLate));
     yt.setVolume(st.muted ? 0 : st.volume);
     armWatchdog(t);
   }
+
+  // Zero-arg on purpose: it's also an event / Media Session handler, which pass arguments.
+  const next = () => load(false);
 
   /** Must run synchronously inside the user gesture (iOS only unlocks audio there). */
   function unlockAudio(): AudioContext | null {
@@ -224,7 +229,7 @@ export function createApp(initial: AppState, ytWrap: HTMLElement) {
       store.set({ world });
       ambience?.setWorld(world);
       persist();
-      if (store.get().started) next();
+      if (store.get().started) load(true);
     },
 
     setPhase(phase: Phase) {

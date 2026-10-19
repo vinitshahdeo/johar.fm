@@ -71,7 +71,7 @@ Songs live in [`src/data/playlists.json`](src/data/playlists.json):
 | `world` | `love`, `travel`, `party` or `festive` |
 | `title`, `artist` | Shown in the radio and on the lock screen |
 | `youtubeId` | The 11-character ID from `youtube.com/watch?v=…`. Leave `""` for a placeholder. |
-| `startAt` | Optional. Seconds to skip (long intros). |
+| `startAt` | Optional. Seconds to skip (long intros). When a listener switches station, the first song there starts at least 30 s in (`JOIN_LATE_SECONDS` in `src/player/offset.ts`) so it feels like the station was already playing. |
 | `notes` | Optional. For you; not shown. |
 | `festival` | Optional, `festive` only: `karam`, `sarhul`, `jitiya` or `fagua`. These songs come up 3× as often during that festival. |
 | `titleMatch` | Optional. Part of the real YouTube title, if the verifier can't match your `title` (see below). |
