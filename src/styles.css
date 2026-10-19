@@ -34,17 +34,25 @@ a { color: inherit; }
 }
 :focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
 
-/* ---------- stage ---------- */
+/* ---------- stage: exactly one screen, never scrolls ---------- */
+html.app, html.app body { height: 100%; overflow: hidden; overscroll-behavior: none; }
 .stage {
   position: relative;
   height: 100vh;
-  height: 100svh;
-  min-height: 560px;
+  height: 100dvh;
   overflow: hidden;
   isolation: isolate;
   background: linear-gradient(#a65a36, #6f2f1c);
 }
 .scene { position: absolute; inset: 0; z-index: 1; }
+/* Landscape/desktop: lift the scene by half the radio's height so the radio doesn't hide the akhra. */
+@media (min-aspect-ratio: 4/5) {
+  .scene { bottom: calc(var(--dock-h, 256px) * 0.5); }
+  .scene::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 30px;
+    background: linear-gradient(transparent, #a65a36); pointer-events: none;
+  }
+}
 .scene > svg { transition: opacity 1.2s ease; }
 .scene > svg.leaving { opacity: 0; }
 
@@ -89,12 +97,26 @@ a { color: inherit; }
   box-shadow: 0 0 0 3px var(--paper), 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
-/* ---------- radio ---------- */
-.radio {
+/* ---------- dock: radio + credit line, pinned to the bottom ---------- */
+.dock {
   position: absolute; z-index: 10;
   left: 50%; transform: translateX(-50%);
-  bottom: max(12px, env(safe-area-inset-bottom));
+  bottom: max(8px, env(safe-area-inset-bottom));
   width: min(560px, calc(100% - 24px));
+  display: flex; flex-direction: column; align-items: stretch; gap: 6px;
+}
+.credit-line {
+  margin: 0; text-align: center; font-size: 12px; line-height: 1.4; color: #fff8ec;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.credit-line a { color: var(--amber); text-decoration: none; }
+@media (max-width: 560px) { .credit-line .love-en { display: none; } }
+.credit-line a:hover, .credit-line a:focus-visible { text-decoration: underline; }
+
+/* ---------- radio ---------- */
+.radio {
+  position: relative;
   padding: 18px 14px 12px;
   color: var(--ink);
   background: var(--paper);
@@ -203,37 +225,10 @@ a { color: inherit; }
 .tune-nag { font-size: 19px; }
 .tune-en { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 
-/* ---------- footer ---------- */
-.foot { position: relative; padding: 40px 16px calc(32px + env(safe-area-inset-bottom)); }
-.foot::before {
-  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 14px;
-  background: var(--sohrai) repeat-x center / auto 14px;
-}
-.foot-inner { max-width: 960px; margin: 0 auto; }
-.foot h2 { font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); margin: 0 0 10px; }
-.foot-cols { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.foot details { border-bottom: 1px solid rgba(244, 235, 221, 0.15); padding: 10px 0; }
-.foot summary { cursor: pointer; font-weight: 600; min-height: 24px; }
-.foot details p { margin: 8px 0 0; color: #d9cbb6; }
-.artists { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.artists a {
-  display: inline-block; padding: 8px 12px; border-radius: 999px;
-  background: rgba(244, 235, 221, 0.08); text-decoration: none;
-}
-.artists a:hover { background: rgba(244, 235, 221, 0.16); }
-.muted { color: #b9a892; }
-.foot-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 28px 0 0; }
-.foot-links a { display: inline-block; padding: 10px 0; }
-.love { margin: 20px 0 0; color: #d9cbb6; }
-.love [lang="hi"] { font-size: 18px; color: var(--paper); }
-.keys { margin-top: 16px; }
-.keys dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; margin: 10px 0 0; }
-.keys dt { font-weight: 700; color: var(--amber); }
-.keys dd { margin: 0; color: #d9cbb6; }
-
-/* Portrait phones: end the scene above the radio so the akhra (fire, drums, dancers) stays visible. */
+/* Portrait phones: end the scene at the top of the radio (measured into --dock-h by main.ts) so the
+   akhra (fire, drums, dancers) stays visible. */
 @media (max-aspect-ratio: 4/5) {
-  .scene { bottom: 200px; }
+  .scene { bottom: calc(var(--dock-h, 256px) - 36px); }
   .scene::after {
     content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 40px;
     background: linear-gradient(transparent, #a65a36); pointer-events: none;
@@ -246,8 +241,24 @@ a { color: inherit; }
   .station small { font-size: 10px; letter-spacing: 0.02em; }
   .controls { gap: 6px; }
 }
-@media (min-width: 900px) {
-  .radio { bottom: 28px; }
+/* Short screens (landscape phones, small laptops): tighten the radio so scene + radio fit. */
+@media (max-height: 600px) {
+  .top { top: max(8px, env(safe-area-inset-top)); }
+  .greet { margin-top: 2px; }
+  .radio { padding: 14px 10px 8px; border-radius: 14px; }
+  .radio::before { top: 4px; height: 7px; background-size: auto 7px; }
+  .dial { padding: 12px 4px 2px; }
+  .station { min-height: 36px; }
+  .station small { display: none; }
+  .now { min-height: 0; padding: 6px 4px 0; }
+  .np-title { font-size: 15px; }
+  .np-artist { font-size: 13px; }
+  .controls { padding-top: 6px; }
+  .tune { padding: 14px 26px 12px; }
+  .tune-greet { font-size: 30px; }
+}
+@media (min-width: 900px) and (min-height: 700px) {
+  .dock { bottom: 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .tune::before, .station.festive::after { animation: none; }

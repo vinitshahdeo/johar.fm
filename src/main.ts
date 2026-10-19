@@ -61,6 +61,12 @@ root.dataset.phase = app.store.get().phase;
 if (festival) root.dataset.festival = festival.id;
 if (world !== 'akhra') void showScene(sceneEl, world);
 
+// The scene ends where the radio starts (portrait), so publish the dock's real height to CSS.
+const dock = document.getElementById('dock')!;
+const setDockHeight = () => root.style.setProperty('--dock-h', `${Math.ceil(dock.getBoundingClientRect().height)}px`);
+setDockHeight();
+if ('ResizeObserver' in window) new ResizeObserver(setDockHeight).observe(dock);
+
 bindRadio(app);
 bindKeyboard(app);
 

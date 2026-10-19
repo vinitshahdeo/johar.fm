@@ -78,8 +78,9 @@ Rules:
    Madhu Mansuri Hasmukh, Monika Mundu, Pawan Roy, Pankaj Roy, Nitesh Kachhap, Kumar Pritam and
    Ignes Kumari. Replace each `TODO` with a real song.
 
-Artist channel links for the footer go in [`src/data/artists.json`](src/data/artists.json). The footer
-only shows artists whose `channelUrl` is filled in.
+Artist channel links go in [`src/data/artists.json`](src/data/artists.json). `npm run verify` checks
+any filled-in `channelUrl`. They aren't shown on the site at the moment (the page is a single screen
+with no footer).
 
 ### Verify playlists
 
@@ -203,6 +204,9 @@ scripts/               verify-playlists.ts, render-images.ts
 dev/                   scene preview, OG card, ambience loudness harness
 tests/                 Vitest
 ```
+
+The page is exactly one screen: no footer, no scrolling. Below the radio is a single line with
+"Made with love from Jharkhand", Credits and Suggest a song.
 
 Keyboard: `Space` play/pause · `→` next · `←` restart · `↑`/`↓` volume · `1`–`4` worlds · `A` village
 sounds · `M` mute.

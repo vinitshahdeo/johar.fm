@@ -339,6 +339,10 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
 5. **Festival dates:** `festivals.json` ships empty; you fill it in each year.
 6. **Ambience:** all synthesised in v1; CC0 recordings may replace layers later.
 7. **Keys:** as specified in §7.4 (←/→ tracks, ↑/↓ volume, 1–4 worlds).
+8. **Single screen (2026-10-19):** the page fits the viewport exactly (`100dvh`, no scrolling) on every
+   size. The footer is removed; one line under the radio keeps "Made with love from Jharkhand", Credits
+   and Suggest a song. The visible FAQ, artist channel links and keyboard-shortcut list are dropped from
+   the page (FAQ stays in JSON-LD; shortcuts stay in button tooltips). This supersedes the footer in §10.
 
 ---
 

@@ -5,7 +5,6 @@ import { paletteCss } from '../src/scene/palettes';
 import { getDayPhase } from '../src/time/dayPhase';
 import { en, nag } from '../src/i18n/strings';
 import { FAQ, SITE_URL } from '../src/content/site';
-import { footerHtml } from './footer';
 import { esc } from './html';
 import { markdown } from './markdown';
 
@@ -63,7 +62,7 @@ function seoTags(): string {
  * - phase palettes as CSS custom properties,
  * - a tiny pre-paint script that sets data-phase from the local clock (same function as the app),
  * - i18n strings for {{nag.key}} / {{en.key}} placeholders,
- * - the footer, SEO tags and JSON-LD, and the rendered CREDITS.md.
+ * - SEO tags and JSON-LD, and the rendered CREDITS.md.
  * Also emits sitemap.xml and robots.txt.
  */
 export function htmlPlugin(): Plugin {
@@ -76,7 +75,6 @@ export function htmlPlugin(): Plugin {
         return html
           .replace('<!--HEAD-->', `${seoTags()}\n    <style>${paletteCss()}</style>\n    <script>${prePaint}</script>`)
           .replace('<!--SCENE-->', akhraScene())
-          .replace('<!--FOOTER-->', footerHtml())
           .replace('<!--CREDITS-->', () => markdown(readFileSync(new URL('../CREDITS.md', import.meta.url), 'utf8')))
           .replace(/\{\{(nag|en)\.(\w+)\}\}/g, (m, lang: 'nag' | 'en', key: string) => {
             const table = (lang === 'nag' ? nag : en) as Record<string, string>;

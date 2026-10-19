@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-phase="dusk" data-world="akhra">
+<html lang="en" class="app" data-phase="dusk" data-world="akhra">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -26,6 +26,7 @@
 
         <p id="festival" class="festival" role="status" hidden></p>
 
+        <div class="dock" id="dock">
         <section class="radio" aria-label="Radio">
           <div class="dial" id="dial" role="group" aria-label="Choose a world">
             <div class="dial-scale" aria-hidden="true"></div>
@@ -65,6 +66,13 @@
           </div>
         </section>
 
+          <p class="credit-line">
+            <span lang="hi" title="{{en.madeWithLove}}">{{nag.madeWithLove}}</span><span class="love-en"> · {{en.madeWithLove}}</span>
+            · <a href="/credits/">Credits</a>
+            · <a href="https://github.com/vinitshahdeo/mandar.fm/issues/new?template=suggest-a-song.yml" target="_blank" rel="noopener">{{en.suggest}}</a>
+          </p>
+        </div>
+
         <div class="overlay" id="overlay">
           <button class="tune" id="tune">
             <span class="tune-greet" lang="hi">{{nag.greeting}}</span>
@@ -74,11 +82,6 @@
         </div>
       </section>
 
-      <footer class="foot" id="about">
-        <div class="foot-inner">
-          <!--FOOTER-->
-        </div>
-      </footer>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
