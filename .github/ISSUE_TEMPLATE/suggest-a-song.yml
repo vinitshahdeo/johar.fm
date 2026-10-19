@@ -1,0 +1,51 @@
+name: Suggest a song
+description: Suggest a Nagpuri / Sadri song for mandar.fm
+title: "Song: "
+labels: ["song-suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Johar! Thanks for suggesting a song. We only add songs from the artist's or label's
+        **official** YouTube upload, so please link that if you can.
+  - type: input
+    id: title
+    attributes:
+      label: Song title
+      placeholder: Pokhara Ke Pire Guiya
+    validations:
+      required: true
+  - type: input
+    id: artist
+    attributes:
+      label: Artist(s)
+      placeholder: Pawan Roy, Pankaj Roy, Monika Mundu
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: YouTube link (official upload)
+      placeholder: https://www.youtube.com/watch?v=...
+    validations:
+      required: true
+  - type: dropdown
+    id: world
+    attributes:
+      label: Which world does it belong in?
+      options:
+        - Akhra (theth Nagpuri, jhumar, folk)
+        - Trekker (2000s–2010s Nagpuri pop, DJ remix)
+        - Biha (wedding, domkach)
+        - Parab (Karam, Sarhul, Jitiya, Fagua)
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: Year (if you know it)
+  - type: textarea
+    id: why
+    attributes:
+      label: Why this song? (optional)
+      description: A memory, where you heard it, anything.

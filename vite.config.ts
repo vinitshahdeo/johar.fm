@@ -7,7 +7,7 @@ export default defineConfig({
     target: 'es2020',
     cssCodeSplit: false,
     assetsInlineLimit: 0,
-    rollupOptions: { input: { main: 'index.html' } },
+    rollupOptions: { input: { main: 'index.html', credits: 'credits/index.html' } },
   },
   test: {
     include: ['tests/**/*.test.ts'],

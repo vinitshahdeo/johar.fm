@@ -9,6 +9,7 @@ import { getDayPhase, isPhase, type Phase } from './time/dayPhase';
 import { getActiveFestival, parseDay, type FestivalEntry } from './time/festival';
 import { bindKeyboard } from './ui/keyboard';
 import { bindRadio } from './ui/radio';
+import { loadYouTubeApi } from './player/youtube';
 
 // Dev/QA overrides: ?phase=night, ?date=2026-09-02, ?world=trekker
 const q = new URLSearchParams(location.search);
@@ -66,7 +67,7 @@ bindKeyboard(app);
 const tune = document.getElementById('tune')!;
 tune.addEventListener('click', () => void app.start());
 // Fetch the YouTube API a moment before the tap lands.
-const warm = () => import('./player/youtube').then((m) => m.loadYouTubeApi()).catch(() => {});
+const warm = () => void loadYouTubeApi().catch(() => {});
 tune.addEventListener('pointerenter', warm, { once: true });
 tune.addEventListener('touchstart', warm, { once: true, passive: true });
 tune.addEventListener('focus', warm, { once: true });
