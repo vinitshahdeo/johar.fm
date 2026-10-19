@@ -7,7 +7,7 @@ export const SUGGEST_URL = `https://github.com/${REPO}/issues/new?template=sugge
 // characters and SEO_DESCRIPTION under ~160 so Google doesn't cut them off.
 export const SEO_TITLE = 'Nagpuri Songs Radio: Jharkhandi Superhit Songs | johar.fm';
 export const SEO_DESCRIPTION =
-  'Free nonstop radio of Nagpuri superhit songs: old Nagpuri, Sadri and Khortha hits, and Jharkhandi love, travel, party and festival songs. One tap to listen.';
+  'Free nonstop radio of Nagpuri superhit songs (नागपुरी गाना): old Nagpuri, Sadri, Khortha and Jharkhandi love, travel, party and festival songs. Tap to listen.';
 export const SHARE_TITLE = 'johar.fm: Nagpuri superhit songs, nonstop';
 export const SHARE_DESCRIPTION =
   'Old Nagpuri, Sadri and Khortha hits from Jharkhand. One tap, and the radio never stops.';
@@ -15,6 +15,8 @@ export const KEYWORDS = [
   'Nagpuri songs', 'Nagpuri superhit songs', 'old Nagpuri songs', 'Nagpuri love songs', 'Nagpuri DJ songs',
   'Jharkhandi songs', 'Jharkhand songs', 'Sadri songs', 'Khortha songs', 'theth Nagpuri', 'jhumar',
   'Karam songs', 'Sarhul songs', 'Nagpuri radio', 'Jharkhand radio',
+  // Devanagari searches. Search/meta only; the page itself stays English apart from the जोहार wordmark.
+  'नागपुरी गाना', 'नागपुरी गीत', 'नागपुरी सुपरहिट गाना', 'झारखंडी गाना',
 ];
 
 export const FAQ: { q: string; a: string }[] = [
