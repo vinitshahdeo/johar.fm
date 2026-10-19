@@ -57,7 +57,7 @@ function paintedSign(text: string): string {
 
 /**
  * Green roadside direction sign on the far edge of the road, some way ahead of the jeep: a striped
- * post with one arrow-shaped board pointing left, the way the jeep is driving (towards Ranchi).
+ * post with one arrow-shaped board pointing right.
  */
 function roadSign(x: number, baseY: number, text: string): string {
   const w = 162;
@@ -85,7 +85,7 @@ function roadSign(x: number, baseY: number, text: string): string {
   return `<g>
   <ellipse cx="${x}" cy="${baseY}" rx="11" ry="3" fill="#000" opacity=".25"/>
   <rect x="${x - 3}" y="${baseY - 140}" width="6" height="140" fill="#e8e2d3"/>${stripes}
-  ${board(baseY - 138, 'left', text)}
+  ${board(baseY - 138, 'right', text)}
 </g>`;
 }
 
