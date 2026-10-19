@@ -1,5 +1,5 @@
 export const SITE_URL = 'https://johar.fm.vercel.app';
-export const REPO = 'vinitshahdeo/mandar.fm';
+export const REPO = 'vinitshahdeo/johar.fm';
 export const SUGGEST_URL = `https://github.com/${REPO}/issues/new?template=suggest-a-song.yml`;
 
 export const FAQ: { q: string; a: string }[] = [

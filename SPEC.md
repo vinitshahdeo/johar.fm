@@ -317,7 +317,7 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
   tested for that size.
 - **Footer**: "Made with love from Jharkhand" (+ Nagpuri line), artist channel links (from
   `artists.json`), link to `/credits` (rendered from CREDITS.md at build), "Suggest a song" →
-  `https://github.com/vinitshahdeo/mandar.fm/issues/new?template=suggest-a-song.yml` with fields for
+  `https://github.com/vinitshahdeo/johar.fm/issues/new?template=suggest-a-song.yml` with fields for
   title, artist, YouTube link, world, why.
 - **README**: run, build, verify, test, deploy-to-Vercel, how to fill playlists/festivals, plus the
   one-line entry for `chetanraj/awesome-saloon-wtf` under Regional.
@@ -337,7 +337,7 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
    `pointer-events:none`. Risk accepted: YouTube's embed policies require a visible player.
 2. **Name: mandar.fm.** Production URL: `https://johar.fm.vercel.app`. "Akhra" stays as the name of the
    default world.
-3. **Repo:** `vinitshahdeo/mandar.fm` (used for "Suggest a song").
+3. **Repo:** `vinitshahdeo/johar.fm` (used for "Suggest a song").
 4. **Festival:** only first-time visitors are auto-switched to Parab; returning visitors see the glow + banner.
 5. **Festival dates:** `festivals.json` ships empty; you fill it in each year.
 6. **Ambience:** all synthesised in v1; CC0 recordings may replace layers later.
@@ -354,7 +354,7 @@ accessed. Synthesised layers are also listed in CREDITS.md as "synthesised in-br
    themselves were renamed to `love`, `travel`, `party`, `festive` (playlists.json, code, tests); the
    scene files keep their original names. Scenes, playlists and
    ambience are unchanged. The localStorage key is now `joharfm:v1`. `SITE_URL` is now
-   `https://johar.fm.vercel.app`; the GitHub repo name (`vinitshahdeo/mandar.fm`) is unchanged.
+   `https://johar.fm.vercel.app`, and the GitHub repo is `vinitshahdeo/johar.fm`.
 10. **Fonts (2026-10-19):** self-hosted Yatra One (display; subset to the wordmark, overlay greeting and
     dial words, ~3 KB) and Mukta (UI; Latin 400/600/700, ~14 KB each), both OFL. Supersedes the
     system-fonts-only decision in §9.

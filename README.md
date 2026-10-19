@@ -227,7 +227,7 @@ sounds · `M` mute.
 ## Credits
 
 See [CREDITS.md](CREDITS.md) or [/credits](https://johar.fm.vercel.app/credits/). Suggest a song with
-the [issue form](https://github.com/vinitshahdeo/mandar.fm/issues/new?template=suggest-a-song.yml).
+the [issue form](https://github.com/vinitshahdeo/johar.fm/issues/new?template=suggest-a-song.yml).
 
 ## Listing in awesome-saloon-wtf
 

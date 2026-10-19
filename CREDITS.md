@@ -20,7 +20,7 @@ Artists whose work is featured (channel links are in the site footer once confir
 - Ignes Kumari
 
 If you are an artist or rights holder and want a song added, changed or removed, please
-[open an issue](https://github.com/vinitshahdeo/mandar.fm/issues/new).
+[open an issue](https://github.com/vinitshahdeo/johar.fm/issues/new).
 
 ## Sounds
 
