@@ -66,7 +66,7 @@ function trekker(): string {
     <path d="M60 -163 q10 -12 20 0z"/><path d="M112 -162 q10 -12 20 0z"/><path d="M140 -164 q10 -12 20 0z"/>
   </g>
   <rect x="-96" y="-150" width="22" height="9" rx="2" fill="#3a2b20"/>
-  <text x="30" y="-111" font-size="17" font-weight="800" letter-spacing="3" fill="${C.saree}" font-family="system-ui, sans-serif" text-anchor="middle">JOHAR</text>
+  <text x="30" y="-111" font-size="17" font-weight="800" letter-spacing="3" fill="${C.saree}" font-family="system-ui, sans-serif" text-anchor="middle">RANCHI</text>
   <circle cx="-188" cy="-110" r="9" fill="#f6ecc4" stroke="#999" stroke-width="2"/>
   <rect x="186" y="-120" width="10" height="16" rx="2" fill="#a51d1d"/>
   <path d="M-60 -60 V-130 M16 -60 V-188 M94 -60 V-188" stroke="${bodyDark}" stroke-width="3"/>
