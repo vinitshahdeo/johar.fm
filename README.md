@@ -238,3 +238,7 @@ the [issue form](https://github.com/vinitshahdeo/johar.fm/issues/new?template=su
 
 Built in Ranchi, Jharkhand, at **23.35° N, 85.33° E**, by
 [Vinit Shahdeo](https://instagram.com/vinitshahdeo).
+
+[![GitHub followers](https://img.shields.io/github/followers/vinitshahdeo.svg?label=Follow%20@vinitshahdeo)](https://github.com/vinitshahdeo/) [![Substack](https://img.shields.io/badge/Substack-FF6719?logo=substack&logoColor=white)](http://vinitshahdeo.substack.com) [![Sponsor Vinit Shahdeo](https://img.shields.io/badge/sponsor-vinitshahdeo-30363D?logo=GitHub-Sponsors&logoColor=#EA4AAA)](https://github.com/sponsors/vinitshahdeo)
+
+
