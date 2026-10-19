@@ -159,6 +159,13 @@ npm run preview      # serve dist/
 `npm run build` is strict: it fails until every world has at least one verified song. To build
 the scaffold before that: `ALLOW_EMPTY_WORLDS=1 npm run build`.
 
+### Search and share text
+
+The Google title and description, the WhatsApp/X preview text and the search keywords live in
+[`src/content/site.ts`](src/content/site.ts) (`SEO_TITLE`, `SEO_DESCRIPTION`, `SHARE_TITLE`,
+`SHARE_DESCRIPTION`, `KEYWORDS`). A test keeps the title under 60 characters and the description under
+160 so Google shows them in full.
+
 ### Fonts
 
 [Yatra One](https://fonts.google.com/specimen/Yatra+One) (logo and dial words) and

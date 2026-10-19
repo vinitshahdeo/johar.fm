@@ -4,13 +4,12 @@ import { akhraScene } from '../src/scene/akhra';
 import { paletteCss } from '../src/scene/palettes';
 import { getDayPhase } from '../src/time/dayPhase';
 import { en, nag } from '../src/i18n/strings';
-import { FAQ, SITE_URL, SUGGEST_URL } from '../src/content/site';
+import {
+  FAQ, KEYWORDS, SEO_DESCRIPTION, SEO_TITLE, SHARE_DESCRIPTION, SHARE_TITLE, SITE_URL, SUGGEST_URL,
+} from '../src/content/site';
 import { esc } from './html';
 import { markdown } from './markdown';
 
-const TITLE = 'johar.fm — Nagpuri radio from Jharkhand';
-const DESCRIPTION =
-  'A Nagpuri radio from Jharkhand that never stops. Four moods (love, travel, party and festive) under the sal trees of a village akhra.';
 
 function seoTags(): string {
   const jsonLd = {
@@ -19,9 +18,24 @@ function seoTags(): string {
       {
         '@type': 'WebSite',
         name: 'johar.fm',
+        alternateName: ['Johar FM', 'जोहार.fm', 'Nagpuri Songs Radio'],
         url: `${SITE_URL}/`,
-        inLanguage: 'en',
-        description: DESCRIPTION,
+        inLanguage: 'en-IN',
+        description: SEO_DESCRIPTION,
+        keywords: KEYWORDS.join(', '),
+      },
+      {
+        '@type': 'WebApplication',
+        name: 'johar.fm',
+        url: `${SITE_URL}/`,
+        description: SEO_DESCRIPTION,
+        applicationCategory: 'MultimediaApplication',
+        genre: ['Nagpuri', 'Sadri', 'Khortha', 'Jharkhandi folk'],
+        operatingSystem: 'Any',
+        isAccessibleForFree: true,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
+        countryOfOrigin: { '@type': 'Country', name: 'India' },
+        locationCreated: { '@type': 'Place', name: 'Ranchi, Jharkhand' },
       },
       {
         '@type': 'FAQPage',
@@ -38,8 +52,8 @@ function seoTags(): string {
     `<link rel="canonical" href="${SITE_URL}/" />`,
     `<meta property="og:type" content="website" />`,
     `<meta property="og:site_name" content="johar.fm" />`,
-    `<meta property="og:title" content="${esc(TITLE)}" />`,
-    `<meta property="og:description" content="${esc(DESCRIPTION)}" />`,
+    `<meta property="og:title" content="${esc(SHARE_TITLE)}" />`,
+    `<meta property="og:description" content="${esc(SHARE_DESCRIPTION)}" />`,
     `<meta property="og:url" content="${SITE_URL}/" />`,
     `<meta property="og:image" content="${og}" />`,
     `<meta property="og:image:width" content="1200" />`,
@@ -47,8 +61,8 @@ function seoTags(): string {
     `<meta property="og:image:alt" content="A village akhra at dusk under sal trees, with the johar.fm radio." />`,
     `<meta property="og:locale" content="en_IN" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
-    `<meta name="twitter:title" content="${esc(TITLE)}" />`,
-    `<meta name="twitter:description" content="${esc(DESCRIPTION)}" />`,
+    `<meta name="twitter:title" content="${esc(SHARE_TITLE)}" />`,
+    `<meta name="twitter:description" content="${esc(SHARE_DESCRIPTION)}" />`,
     `<meta name="twitter:image" content="${og}" />`,
     `<link rel="apple-touch-icon" href="/apple-touch-icon.png" />`,
     `<script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, '\\u003c')}</script>`,
@@ -76,6 +90,8 @@ export function htmlPlugin(): Plugin {
           .replace('<!--SCENE-->', akhraScene())
           .replace(/\{\{site\.suggestUrl\}\}/g, esc(SUGGEST_URL))
           .replace(/\{\{site\.url\}\}/g, esc(SITE_URL))
+          .replace(/\{\{site\.title\}\}/g, esc(SEO_TITLE))
+          .replace(/\{\{site\.description\}\}/g, esc(SEO_DESCRIPTION))
           .replace('<!--CREDITS-->', () => markdown(readFileSync(new URL('../CREDITS.md', import.meta.url), 'utf8')))
           .replace(/\{\{(en|nag)\.(\w+)\}\}/g, (m, lang: 'en' | 'nag', key: string) => {
             const table: Record<string, string> = lang === 'nag' ? nag : en;
